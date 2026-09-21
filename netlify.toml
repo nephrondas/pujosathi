@@ -1,0 +1,17 @@
+# For GIT-BASED deploys (Netlify Drop ignores this file; Drop uses _redirects).
+# REPLACE THE PLACEHOLDER with your real Render URL after creating the service.
+
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://PUJOSATHI-BACKEND-URL.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pujo/plan/*"
+  to = "https://PUJOSATHI-BACKEND-URL.onrender.com/pujo/plan/:splat"
+  status = 200
+  force = true

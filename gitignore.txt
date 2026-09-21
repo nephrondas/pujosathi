@@ -1,0 +1,6 @@
+data/
+.env
+.env.*
+mock_sb.py
+__pycache__/
+*.pyc

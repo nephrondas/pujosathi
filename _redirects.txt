@@ -1,0 +1,7 @@
+# PujoSathi — Netlify reverse proxy to the Render backend.
+# REPLACE BOTH PLACEHOLDERS with your real Render URL after creating the service,
+# e.g. https://pujosathi-backend.onrender.com
+# Netlify Drop honours this _redirects file (it ignores netlify.toml).
+
+/api/*        https://PUJOSATHI-BACKEND-URL.onrender.com/api/:splat        200!
+/pujo/plan/*  https://PUJOSATHI-BACKEND-URL.onrender.com/pujo/plan/:splat  200!
