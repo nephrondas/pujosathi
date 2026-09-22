@@ -254,7 +254,7 @@
     background:transparent;color:var(--gold2);font-size:15px;cursor:pointer}
   @media(max-width:840px){.ps-fab.on{display:flex}}
   /* back to top */
-  .toTop{position:fixed;bottom:18px;right:14px;z-index:58;width:46px;height:46px;border-radius:50%;
+  .toTop{position:fixed;bottom:18px;left:14px;z-index:58;width:46px;height:46px;border-radius:50%;
     border:1.5px solid var(--gold);background:rgba(43,8,8,.92);color:var(--gold2);font-size:18px;cursor:pointer;
     box-shadow:0 8px 22px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(14px);transition:.25s}
   .toTop.on{opacity:1;visibility:visible;transform:none}
@@ -443,7 +443,7 @@
   body.authed .mp-pill{display:inline-flex}
   body.authed .signin-btn{display:none}
   .acct{position:relative}
-  .avatar{width:34px;height:34px;border-radius:50%;border:2px solid var(--gold);background:linear-gradient(135deg,var(--maroon2),var(--maroon));color:#ffe9bd;font:700 14px/1 'Poppins',sans-serif;cursor:pointer;overflow:hidden;padding:0}
+  .avatar{width:34px;height:34px;border-radius:50%;border:2px solid var(--gold);background:linear-gradient(135deg,var(--maroon2),var(--maroon));color:#ffe9bd;font:700 14px/1 'Poppins',sans-serif;cursor:pointer;overflow:hidden;padding:0;display:inline-flex;align-items:center;justify-content:center}
   .avatar img{width:100%;height:100%;object-fit:cover}
   .acct-menu{position:absolute;right:0;top:calc(100% + 8px);background:var(--cream);border:1.5px solid var(--gold);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.35);min-width:212px;padding:6px;display:none;z-index:120}
   .acct-menu.open{display:block}
@@ -998,7 +998,7 @@
       <button type="button" onclick="infoModal('hiw')" data-i18n="f_hiw">How PujoSathi Works</button>
       <button type="button" onclick="infoModal('savemp')" data-i18n="f_savemp">Save &amp; My Pujo</button>
       <button type="button" onclick="infoModal('guest')" data-i18n="f_guest">Guest vs Account</button>
-      <a href="/cdn-cgi/l/email-protection#1078757c7c7f5060657a7f63716478793e797e" data-i18n="f_contact">Contact Us</a>
+      <a href="/cdn-cgi/l/email-protection#81e9e4ededeec1f1f4ebeef2e0f5e9e8afe8ef" data-i18n="f_contact">Contact Us</a>
     </nav>
     <nav class="f-col legal" aria-labelledby="fh-legal">
       <h4 id="fh-legal" data-i18n="foot_legal">Legal</h4>
@@ -1102,7 +1102,7 @@ en:{
  conv_h:'Keep your Pujo plans everywhere',conv_p:'{n} saved places are waiting on this device — sign in to keep them everywhere.',
  auth_google:'Continue with Google',auth_fb:'Continue with Facebook',auth_email:'Continue with Email',auth_guest:'Continue as Guest',
  em_name:'Your name',em_pass:'Password',em_signup:'Create Account',em_login:'Log In',
- google_connecting:'Connecting to Google…',fb_connecting:'Connecting to Facebook…',fb_err_cancel:'Facebook sign-in was cancelled. You can try again or use another sign-in method.',fb_err_fail:'We can\u2019t complete Facebook sign-in right now. Please try again.',fb_err_net:'Something went wrong. Please check your connection and try again.',
+ fb_connecting:'Connecting to Facebook…',google_connecting:'Connecting to Google…',fb_err_cancel:'Facebook sign-in was cancelled. You can try again or use another sign-in method.',fb_err_fail:'We can\u2019t complete Facebook sign-in right now. Please try again.',fb_err_net:'Something went wrong. Please check your connection and try again.',
  ef_lh:'Log in with Email',ef_sh:'Create your free account',em_ph:'Enter your email',pw_ph_l:'Enter your password',pw_ph_s:'Create a password',pw_show:'Show',pw_hide:'Hide',em_hint:'Use at least {n} characters.',em_forgot:'Forgot password?',em_err_mail:'Please enter a valid email address.',em_err_pw:'Email or password is incorrect.',em_err_exists:'An account with this email already exists — please log in.',em_err_conf:'Please confirm your email before continuing.',em_err_expired:'This verification link/code has expired. Please request a new one.',em_err_code:'That code isn\u2019t correct. Please try again.',em_err_many:'Too many attempts. Please wait a moment and try again.',em_err_net:'Something went wrong. Please try again.',em_err_mailer:'Password reset emails aren\u2019t available in this environment.',
  conf_h:'Check your email 📬',conf_p1:'We\u2019ve sent a confirmation link to:',conf_p2:'Please check your inbox and click the confirmation link to activate your PujoSathi account.',conf_open:'Open Email',conf_q:'Didn\u2019t receive the email?',conf_resend:'Resend Confirmation Email',cool_in:'Resend available in {s}s',
  otp_h:'Check your email 🔐',otp_p1:'We sent a 6-digit verification code to:',otp_lbl:'Email verification code',otp_verify:'Verify Email',otp_q:'Didn\u2019t receive the code?',otp_resend:'Resend Code',
@@ -1213,7 +1213,7 @@ bn:{
  conv_h:'পুজোর প্ল্যান সব জায়গায়',conv_p:'এই ডিভাইসে {n}টা সেভ করা ঠিকানা অপেক্ষা করছে — সাইন ইন করলেই সব ডিভাইসে মিলবে।',
  auth_google:'Google দিয়ে চালিয়ে যান',auth_fb:'Facebook দিয়ে চালিয়ে যান',auth_email:'ইমেল দিয়ে চালিয়ে যান',auth_guest:'গেস্ট হিসেবে ঘুরুন',
  em_name:'আপনার নাম',em_pass:'পাসওয়ার্ড',em_signup:'অ্যাকাউন্ট খুলুন',em_login:'লগ ইন',
- fb_connecting:'ফেসবুকের সঙ্গে যুক্ত হচ্ছি…',fb_err_cancel:'ফেসবুক সাইন-ইন বাতিল হয়ে গেছে। আবার চেষ্টা করুন বা অন্য ভাবে সাইন-ইন করুন।',fb_err_fail:'ফেসবুক সাইন-ইন এখন সম্পূর্ণ হচ্ছে না। আবার চেষ্টা করুন।',fb_err_net:'কিছু একটা গোলমাল হয়েছে। সংযোগ দেখে আবার চেষ্টা করুন।',
+ fb_connecting:'ফেসবুকের সঙ্গে যুক্ত হচ্ছি…',google_connecting:'গুগলের সঙ্গে যুক্ত হচ্ছি…',fb_err_cancel:'ফেসবুক সাইন-ইন বাতিল হয়ে গেছে। আবার চেষ্টা করুন বা অন্য ভাবে সাইন-ইন করুন।',fb_err_fail:'ফেসবুক সাইন-ইন এখন সম্পূর্ণ হচ্ছে না। আবার চেষ্টা করুন।',fb_err_net:'কিছু একটা গোলমাল হয়েছে। সংযোগ দেখে আবার চেষ্টা করুন।',
  ef_lh:'ইমেল দিয়ে লগ ইন',ef_sh:'ফ্রি অ্যাকাউন্ট খুলুন',em_ph:'ইমেল লিখুন',pw_ph_l:'পাসওয়ার্ড লিখুন',pw_ph_s:'নতুন পাসওয়ার্ড বানান',pw_show:'দেখাও',pw_hide:'লুকাও',em_hint:'অন্তত {n} অক্ষরের পাসওয়ার্ড দিন।',em_forgot:'পাসওয়ার্ড ভুলে গেছেন?',em_err_mail:'একটা সঠিক ইমেল ঠিকানা লিখুন।',em_err_pw:'ইমেল বা পাসওয়ার্ড মেলেনি।',em_err_exists:'এই ইমেলে অ্যাকাউন্ট আছে — লগ ইন করুন।',em_err_conf:'এগোনোর আগে ইমেল কনফার্ম করুন।',em_err_expired:'ভেরিফিকেশন লিঙ্ক বা কোডের মেয়াদ শেষ — নতুন করে পাঠিয়ে নিন।',em_err_code:'কোডটা ঠিক হয়নি। আবার চেষ্টা করুন।',em_err_many:'অনেকবার চেষ্টা হয়ে গেছে। একটু থেমে আবার করুন।',em_err_net:'কিছু একটা গোলমাল হয়েছে। আবার চেষ্টা করুন।',em_err_mailer:'এই পরিবেশে পাসওয়ার্ড রিসেট ইমেল পাঠানো যায় না।',
  conf_h:'আপনার ইমেইল দেখুন 📬',conf_p1:'আমরা একটি confirmation link পাঠিয়েছি:',conf_p2:'ইনবক্স খুলে confirmation link-এ ক্লিক করুন — তাতেই আপনার PujoSathi অ্যাকাউন্ট চালু হবে।',conf_open:'ইমেইল খুলুন',conf_q:'ইমেইল পাননি?',conf_resend:'কনফার্মেশন ইমেল আবার পাঠান',cool_in:'আবার পাঠানো যাবে {s} সেকেন্ডে',
  otp_h:'আপনার ইমেইল দেখুন 🔐',otp_p1:'আমরা ৬-অঙ্কের verification code পাঠিয়েছি:',otp_lbl:'ইমেল ভেরিফিকেশন কোড',otp_verify:'ইমেল যাচাই করুন',otp_q:'কোড পাননি?',otp_resend:'কোড আবার পাঠান',
@@ -2691,7 +2691,7 @@ function fbBtnState(busy){
 function gBtnState(busy){
   const b=document.querySelector('#authBox .prov-btn.g');
   if(!b)return;
-  if(busy){b.dataset.lbl=b.innerHTML;b.classList.add('loading');b.innerHTML='<span class="ic">G</span> '+t('fb_connecting')}
+  if(busy){b.dataset.lbl=b.innerHTML;b.classList.add('loading');b.innerHTML='<span class="ic">G</span> '+t('google_connecting')}
   else{b.classList.remove('loading');if(b.dataset.lbl)b.innerHTML=b.dataset.lbl}
   window.__gBusy=busy;
 }
@@ -3519,5 +3519,5 @@ renderStatic(); renderDynamic();
   bootAccount();
   fbOauthInit();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3ef15a819e58b19',t:'MTc5MDA1Njc3Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3ef85ed29eeb237',t:'MTc5MDA2MTM3NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
