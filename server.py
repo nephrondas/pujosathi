@@ -16,9 +16,6 @@ Two persistence modes (auto-detected, never mixed for the same user):
    server-side in data/authdb.json (PBKDF2 passwords). Used when the env
    vars are absent, so the app never fakes a backend.
 
-Mobile-OTP stays in honest demo mode in both cases until an SMS provider
-is connected (Supabase Phone provider or a gateway) — see SETUP-AUTH.md.
-
 Public share pages (/pujo/plan/<id>) serve a privacy-safe snapshot
 (name + places + times only, no emails/phones/user ids).
 """
@@ -59,7 +56,7 @@ def _save(path, d):
     os.replace(tmp, path)
 
 def db():
-    return _load(DB_PATH, {'users': {}, 'tokens': {}, 'data': {}, 'otp': {}, 'shares': {}})
+    return _load(DB_PATH, {'users': {}, 'tokens': {}, 'data': {}, 'shares': {}})
 
 def save_db(d):
     _save(DB_PATH, d)
@@ -217,8 +214,11 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Content-Length', str(len(b)))
         self.end_headers()
         self.wfile.write(b)
-    def err(self, msg, code=400):
-        self.send_json({'error': msg}, code)
+    def err(self, msg, status=400, code=None):
+        payload = {'error': msg}
+        if code:
+            payload['code'] = code
+        self.send_json(payload, status)
     def body_json(self):
         try:
             n = int(self.headers.get('Content-Length') or 0)
@@ -261,11 +261,14 @@ class Handler(BaseHTTPRequestHandler):
             st, r = sb('/auth/v1/signup', 'POST', {'email': email, 'password': pw, 'data': {'name': name}})
             if st in (422, 400) and r and 'already registered' in json.dumps(r).lower():
                 return self.err('email exists', 409)
-            if st != 200 or not r or not r.get('access_token'):
-                msg = (r or {}).get('msg', '') if isinstance(r, dict) else ''
-                if 'confirm' in msg.lower():
-                    return self.err('email confirmation required — confirm via the Supabase email, then log in', 403)
+            if st == 422 and r and 'password' in json.dumps(r).lower():
+                return self.err('weak password', 422, code='weak_password')
+            if st != 200 or not r:
                 return self.err('auth unavailable, please try again', 502 if st == 0 else 503)
+            if not r.get('access_token'):
+                # Confirmation link / code sent — never treat the user as signed in yet.
+                return self.send_json({'confirmation_required': True, 'email': email,
+                                       'user': {'id': (r.get('user') or {}).get('id', ''), 'email': email}})
             u = r['user']
             tok = secrets.token_urlsafe(24)
             with LOCK:
@@ -280,6 +283,8 @@ class Handler(BaseHTTPRequestHandler):
             pw = b.get('password') or ''
             st, r = sb('/auth/v1/token?grant_type=password', 'POST', {'email': email, 'password': pw})
             if st == 400:
+                if r and 'email_not_confirmed' in json.dumps(r).lower():
+                    return self.err('email not confirmed', 403, code='email_not_confirmed')
                 return self.err('bad credentials', 401)
             if st != 200 or not r or not r.get('access_token'):
                 return self.err('auth unavailable, please try again', 502 if st == 0 else 503)
@@ -347,6 +352,101 @@ class Handler(BaseHTTPRequestHandler):
             if path == '/auth/logout' and self.command == 'POST':
                 return self._local_logout()
         # ---------- LOCAL MODE / phone accounts / shared local fallbacks ----------
+        # ---------- OAuth (Facebook) : exchange a Supabase OAuth session for our opaque session ----------
+        if SB_MODE and path == '/auth/oauth-session' and self.command == 'POST':
+            at = (b.get('access_token') or '').strip()
+            rt = (b.get('refresh_token') or '').strip()
+            if not at or not rt:
+                return self.err('invalid input', 422)
+            st, u = sb('/auth/v1/user', token=at)   # server-side validation — the token is only trusted after Supabase confirms it
+            if st != 200 or not isinstance(u, dict) or not u.get('id'):
+                return self.err('oauth session rejected', 401)
+            meta = u.get('user_metadata') or u.get('raw_user_meta_data') or {}
+            prov = 'oauth'
+            for ident in (u.get('identities') or []):
+                if isinstance(ident, dict) and ident.get('provider'):
+                    prov = ident['provider']; break
+            else:
+                prov = (u.get('app_metadata') or {}).get('provider') or 'oauth'
+            email = u.get('email') or ''
+            name = (meta.get('name') or meta.get('full_name') or (email.split('@')[0] if email else '') or 'Pujo Friend')[:40]
+            photo = meta.get('avatar_url') or meta.get('picture') or ''
+            if not photo:
+                for ident in (u.get('identities') or []):
+                    idd = ident.get('identity_data') or {}
+                    photo = idd.get('avatar_url') or idd.get('picture') or ''
+                    if photo: break
+            prof = {'id': u['id'], 'name': name, 'email': email, 'phone': '', 'photo': photo, 'provider': prov}
+            tok = secrets.token_urlsafe(24)
+            with LOCK:
+                ssn = sessions(); ssn[tok] = {'access': at, 'refresh': rt, 'exp': jwt_exp(at), 'sb': u['id'], 'tok': tok}
+                save_sessions(ssn)
+            data = sb_user_data(at, u['id'])
+            return self.send_json({'token': tok, 'user': prof, 'data': data})
+        # ---------- email auth support: config / resend / verify / reset ----------
+        if path == '/auth/config' and self.command == 'GET':
+            if not SB_MODE:
+                return self.send_json({'mode': 'local', 'autoconfirm': True, 'minPasswordLength': 4, 'otpEmail': False})
+            st, r = sb('/auth/v1/settings')
+            if st != 200 or not isinstance(r, dict):
+                return self.send_json({'mode': 'supabase', 'autoconfirm': False, 'minPasswordLength': 6,
+                                       'otpEmail': False, 'supabaseUrl': SB_URL, 'supabaseAnonKey': SB_KEY})
+            ex = r.get('external') or {}
+            em = ex.get('email') if isinstance(ex.get('email'), dict) else {}
+            return self.send_json({'mode': 'supabase',
+                                   'autoconfirm': bool(r.get('mailer_autoconfirm')),
+                                   'minPasswordLength': int(em.get('min_length') or 6),
+                                   'otpEmail': False,
+                                   # PUBLIC client-safe values only (the anon key ships in every
+                                   # standard Supabase frontend; RLS enforces per-user access)
+                                   'supabaseUrl': SB_URL, 'supabaseAnonKey': SB_KEY})
+        if path == '/auth/resend' and self.command == 'POST':
+            email = (b.get('email') or '').strip().lower()
+            if not re.match(r'^[^@\s]+@[^@\s]+\.[^@]+$', email):
+                return self.err('invalid email', 422)
+            if not SB_MODE:
+                return self.err('no mailer in this environment', 501, code='no_mailer')
+            st, r = sb('/auth/v1/resend', 'POST', {'email': email, 'type': 'signup'})
+            if st == 429:
+                return self.err('too many requests', 429, code='too_many')
+            if st not in (200, 204):
+                return self.err('auth unavailable, please try again', 502 if st == 0 else 503)
+            return self.send_json({'ok': True})
+        if path == '/auth/verify-email' and self.command == 'POST':
+            email = (b.get('email') or '').strip().lower()
+            tk = (b.get('token') or '').strip()
+            if not re.match(r'^[^@\s]+@[^@\s]+\.[^@]+$', email) or not re.match(r'^\d{6}$', tk):
+                return self.err('invalid input', 422)
+            if not SB_MODE:
+                return self.err('no mailer in this environment', 501, code='no_mailer')
+            st, r = sb('/auth/v1/verify', 'POST', {'type': 'signup', 'email': email, 'token': tk})
+            if st in (401, 403):
+                txt = json.dumps(r or {}).lower()
+                return self.err('bad or expired code', 401, code='expired_code' if 'expired' in txt else 'bad_code')
+            if st != 200 or not r or not r.get('access_token'):
+                return self.err('auth unavailable, please try again', 502 if st == 0 else 503)
+            u = r['user']
+            tok = secrets.token_urlsafe(24)
+            with LOCK:
+                ssn = sessions(); ssn[tok] = {'access': r['access_token'], 'refresh': r['refresh_token'],
+                                              'exp': jwt_exp(r['access_token']), 'sb': u['id'], 'tok': tok}
+                save_sessions(ssn)
+            meta = u.get('user_metadata') or u.get('raw_user_meta_data') or {}
+            prof = {'id': u['id'], 'name': meta.get('name') or email.split('@')[0], 'email': u.get('email', email),
+                    'phone': '', 'photo': meta.get('photo', '') or '', 'provider': 'email'}
+            return self.send_json({'token': tok, 'user': prof, 'data': sb_user_data(r['access_token'], u['id'])})
+        if path == '/auth/reset' and self.command == 'POST':
+            email = (b.get('email') or '').strip().lower()
+            if not re.match(r'^[^@\s]+@[^@\s]+\.[^@]+$', email):
+                return self.err('invalid email', 422)
+            if not SB_MODE:
+                return self.err('no mailer in this environment', 501, code='no_mailer')
+            st, r = sb('/auth/v1/recover', 'POST', {'email': email})
+            if st == 429:
+                return self.err('too many requests', 429, code='too_many')
+            if st not in (200, 204):
+                return self.err('auth unavailable, please try again', 502 if st == 0 else 503)
+            return self.send_json({'ok': True})
         if path == '/auth/signup' and self.command == 'POST':
             name = (b.get('name') or '').strip()
             email = (b.get('email') or '').strip().lower()
@@ -382,38 +482,6 @@ class Handler(BaseHTTPRequestHandler):
                 d['tokens'][tok] = {'uid': u['id']}
                 save_db(d)
             return self.send_json({'token': tok, 'user': public_user(u), 'data': self.user_data(u['id'])})
-        if path == '/auth/otp-send' and self.command == 'POST':
-            phone = re.sub(r'[^\d+]', '', b.get('phone') or '')
-            if len(re.sub(r'\D', '', phone)) < 10:
-                return self.err('invalid phone', 422)
-            code = str(secrets.randbelow(9000) + 1000)
-            # No SMS gateway configured → honest demo mode (see SETUP-AUTH.md)
-            with LOCK:
-                d = db()
-                d.setdefault('otp', {})[phone] = {'code': code}
-                save_db(d)
-            return self.send_json({'demo': True, 'code': code})
-        if path == '/auth/otp-verify' and self.command == 'POST':
-            phone = re.sub(r'[^\d+]', '', b.get('phone') or '')
-            code = (b.get('code') or '').strip()
-            d = db()
-            rec = d.get('otp', {}).get(phone, {})
-            if rec.get('code') != code:
-                return self.err('bad otp', 401)
-            with LOCK:
-                d = db()
-                d.get('otp', {}).pop(phone, None)
-                uid = 'm:' + re.sub(r'\D', '', phone)
-                u = d['users'].get(uid)
-                if not u:
-                    u = {'id': uid, 'name': 'Pujo Friend', 'email': '', 'phone': phone,
-                         'photo': '', 'provider': 'mobile', 'created': 0}
-                    d['users'][uid] = u
-                tok = secrets.token_urlsafe(24)
-                d['tokens'][tok] = {'uid': uid}
-                d['data'].setdefault(uid, {'saved': [], 'visited': [], 'plan': {'shareable': False, 'days': {}}})
-                save_db(d)
-            return self.send_json({'token': tok, 'user': public_user(u), 'data': self.user_data(uid)})
         if path == '/auth/logout' and self.command == 'POST':
             return self._local_logout()
         if path == '/me' and self.command == 'GET':

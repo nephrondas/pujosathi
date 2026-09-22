@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="theme-color" content="#4a0d0d">
 <title>PujoSathi — Kolkata's Food Map for Durga Pujo 2026 · 17–21 Oct</title>
 <meta name="description" content="Handpicked Kolkata restaurants, biryani addas, street-food legends and mishti shops — mapped, timed and Pujo-ready for Durga Puja 2026 (Shashthi 17 Oct – Dashami 21 Oct). English & বাংলা.">
@@ -97,7 +97,7 @@
     font-family:'Poppins','Baloo Da 2','Segoe UI',system-ui,'Nirmala UI',sans-serif;
     background:var(--maroon); color:var(--ink); line-height:1.55;
   }
-  .serif,h1,h2,h3,.stat b,.cd-cell b,.plan .pamt,.logo b,.d-name,.pair .pandal,.modal-head h3{font-family:'Galada','Baloo Da 2','Playfair Display',Georgia,'Nirmala UI',serif}
+  .serif,h1,h2,h3,.stat b,.cd-cell b,.plan .pamt,.logo b,.pair .pandal,.modal-head h3{font-family:'Galada','Baloo Da 2','Playfair Display',Georgia,'Nirmala UI',serif}
   ::selection{background:var(--gold);color:var(--maroon)}
 
   /* ---------- decorative alpona border strip ---------- */
@@ -198,7 +198,7 @@
   .fbtn{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--gold);background:transparent;color:var(--gold2);font:inherit;font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;cursor:pointer;flex:0 0 auto}
   .fbtn:hover{background:var(--gold);color:#4a2705}
   .fbtn b{display:inline-block;transition:.2s;font-size:11px}
-  .filterbar.collapsed .tabs,.filterbar.collapsed .chips,.filterbar.collapsed .search{display:none}
+  .filterbar.collapsed .tabs,.filterbar.collapsed .chips{display:none}
   .filterbar.collapsed .filter-in{padding:8px 20px;justify-content:flex-start}
   .filterbar.collapsed{background:linear-gradient(180deg,rgba(74,13,13,.96),rgba(74,13,13,.92))}
   .filterbar{transition:opacity .22s ease,top .32s cubic-bezier(.4,0,.2,1)}
@@ -241,6 +241,9 @@
     transition:top .32s cubic-bezier(.4,0,.2,1)}
   body.hid-hdr .ps-fab{top:12px}
   .ps-fab.off{display:none!important}
+  /* P22 · the standing corner search button shows whenever the pandal section
+     is in view — not only on narrow screens */
+  .ps-fab.on{display:flex}
   .ps-bar{position:fixed;top:0;left:0;right:0;z-index:70;background:rgba(43,8,8,.97);backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);padding:10px 12px;display:none;gap:8px;align-items:center}
   .ps-bar.open{display:flex}
@@ -262,6 +265,9 @@
   .card{position:relative;background:var(--card);border-radius:18px;overflow:hidden;border:1px solid rgba(0,0,0,.08);box-shadow:0 10px 26px rgba(20,4,4,.35);display:flex;flex-direction:column;transition:.22s}
   .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,4,4,.5)}
   .card.featured{border:1.5px solid var(--gold);box-shadow:0 10px 30px rgba(233,182,77,.25)}
+  /* P26 · PUJO DEAL ribbon sits over the top-left corner — drop the name block
+     below it so the full restaurant name stays readable */
+  .card.featured .card-top{padding-top:48px}
   .ribbon{position:absolute;top:14px;left:-8px;background:linear-gradient(180deg,var(--gold2),var(--gold));color:#4a2705;font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;padding:5px 14px 5px 16px;border-radius:0 8px 8px 0;box-shadow:0 3px 10px rgba(0,0,0,.3);z-index:3}
   .ribbon:after{content:'';position:absolute;left:0;bottom:-6px;border:3px solid transparent;border-top-color:#a8761c;border-right-color:#a8761c}
   .card-top{display:flex;gap:14px;padding:18px 18px 10px;align-items:flex-start}
@@ -329,11 +335,11 @@
 .zchip.z-south{background:#fde3d3;color:#8a3d12}.zchip.z-east{background:#d8e9f2;color:#125a73}
 .zchip.z-sw{background:#f4d9e2;color:#7a1f43}.zchip.z-ho{background:#e3def7;color:#4b3a8f}.zchip.z-n24{background:#d7f0ec;color:#0c5f57}.zchip.z-hg{background:#fbe8d0;color:#8a4d0f}
 .d-note{font-size:13px;color:var(--ink2);margin:3px 0}
-.d-addr{font-size:12px;color:#8a6d4a}
+.d-addr{font-size:12px;color:#6f5535}
 .d-side{display:flex;flex-direction:column;gap:6px;align-items:flex-end;min-width:170px;justify-content:flex-start}
 .d-side .mini2{margin-top:4px}
 .d-eats{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
-.d-eats>b{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a6d4a}
+.d-eats>b{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#6f5535}
 .d-eat{border:1px solid #ddc79c;background:#fff;font:inherit;font-size:12px;font-weight:700;color:var(--maroon3);border-radius:99px;padding:5px 11px;cursor:pointer}
 .d-eat:hover{background:#fdf1da}
 @media(max-width:700px){.drow{grid-template-columns:1fr}.d-side{grid-column:1;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start}.d-eats{align-items:flex-start}.d-eats>b{width:100%}}
@@ -348,7 +354,7 @@
 .drow:hover{box-shadow:0 12px 28px rgba(233,182,77,.25)}
 .d-name{font-size:16.5px}
 .tchip{font-size:9.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:2.5px 8px;border-radius:99px;white-space:nowrap}
-.t-t{background:#efe6d2;color:#6b4a12}.t-h{background:#f3e3f7;color:#6d2a80}
+.t-t{background:#efe6d2;color:#6b4a12}.tchip-h{background:#f3e3f7;color:#6d2a80}
 .t-m{background:#fde0d8;color:#993116}.t-a{background:#d8f0ea;color:#0f6b52}
 .t-r{background:#dcebfa;color:#1b5480}
 .d-star{color:#c9971c;font-size:14px}
@@ -357,13 +363,48 @@
 .d-pair{grid-column:1/-1;margin-top:6px;background:linear-gradient(135deg,#fff6df,#fdeec9);border:1px dashed var(--gold);border-radius:10px;padding:9px 12px;font-size:12.5px;color:#5d4408}
 .d-pair b{color:#3f2f04}
 
-/* ---------- footer ---------- */
+/* ---------- footer (P24) ---------- */
   footer{margin-top:80px;background:#2f0808;border-top:1px solid var(--line)}
-  .foot-in{max-width:1200px;margin:0 auto;padding:40px 20px 30px;display:flex;gap:30px;flex-wrap:wrap;justify-content:space-between}
-  .foot-in h4{color:var(--gold2);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-  .foot-in p,.foot-in a{color:#d8bd97;font-size:13.5px;text-decoration:none;display:block;margin:5px 0}
-  .foot-in a:hover{color:#fff}
-  .copyright{text-align:center;color:#a98c68;font-size:12px;padding:16px;border-top:1px solid rgba(233,182,77,.15)}
+  .foot-in{max-width:1200px;margin:0 auto;padding:46px 20px 34px;display:grid;grid-template-columns:1.45fr 1fr 1fr 1fr;gap:30px}
+  .f-logo{display:flex;align-items:center;gap:9px;font-size:19px;color:var(--cream);font-family:'Baloo Da 2','Poppins',sans-serif;font-weight:800;margin-bottom:10px}
+  .f-logo .lg-badge{font-size:20px}
+  .f-logo span{color:var(--gold2)}
+  .f-desc{color:#d8bd97;font-size:13.5px;line-height:1.65;max-width:280px;margin:0}
+  .f-city{color:#a98c68;font-size:12px;letter-spacing:.5px;margin:12px 0 0}
+  .f-col{display:block}
+  .f-col h4{color:var(--gold2);font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:4px 0 12px}
+  footer nav.f-col a,footer nav.f-col button{display:block;width:100%;text-align:left;background:none;border:0;padding:7px 0;color:#d8bd97;font-size:13.5px;line-height:1.5;text-decoration:none;font-family:inherit;cursor:pointer;border-radius:6px;transition:color .15s ease}
+  footer nav.f-col a:hover,footer nav.f-col button:hover{color:#fff}
+  footer nav.f-col a:focus-visible,footer nav.f-col button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .foot-bottom{border-top:1px solid rgba(233,182,77,.15)}
+  .fb-in{max-width:1200px;margin:0 auto;padding:20px 20px 24px;text-align:center}
+  .fb-line{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;color:#d8bd97;font-size:13px}
+  .fb-line .dot{color:#a98c68}
+  .f-note{display:block;color:#a98c68;font-size:12px;margin-top:8px}
+  .f-credits{display:block;color:#a98c68;font-size:11.5px;margin-top:10px}
+  .fb-legal{display:none}
+  @media(max-width:840px){
+    .foot-in{grid-template-columns:1fr 1fr;gap:10px 20px;padding:30px 18px 22px}
+    .f-brand{grid-column:1/-1}
+    .f-logo{font-size:18px;margin-bottom:8px}
+    .f-city{margin-top:8px}
+    /* P26 · mobile: the Legal column steps aside — the three legal links move
+       into a compact inline row in the bottom bar instead */
+    .f-col.legal{display:none}
+    .fb-legal{display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;margin-top:10px}
+    .fb-legal button,.fb-legal a{background:none;border:0;padding:8px 4px;font:inherit;font-size:11.5px;color:#a98c68;text-decoration:underline;text-underline-offset:2px;cursor:pointer;border-radius:6px}
+    .fb-legal button:hover,.fb-legal a:hover{color:#d8bd97}
+    .fb-legal button:focus-visible,.fb-legal a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    .f-col h4{margin:2px 0 8px}
+    footer nav.f-col a,footer nav.f-col button{padding:7px 0}
+    .fb-in{padding:14px 18px 18px}
+    .f-note{margin-top:6px}
+    .f-credits{margin-top:6px}
+  }
+  @media(max-width:430px){
+    /* keep the last lines clear of the floating scroll-top button */
+    .f-note,.f-credits{max-width:calc(100% - 116px);margin-left:auto;margin-right:auto}
+  }
 
   /* ---------- modal ---------- */
   .overlay{position:fixed;inset:0;background:rgba(20,4,4,.75);backdrop-filter:blur(5px);z-index:100;display:none;align-items:center;justify-content:center;padding:18px}
@@ -428,9 +469,7 @@
   .auth-right{padding:22px 22px 18px;background:var(--cream);border-radius:0 19px 19px 0}
   .conv-banner{background:#fdf3e3;border:1px solid #ecd9ae;border-radius:11px;padding:9px 12px;font-size:12px;color:#7a5416;margin-bottom:12px;line-height:1.5}
   .prov-btn{margin-bottom:8px;padding:11px 13px;font-size:13.5px;border-radius:11px}
-  .prov2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .prov2 .prov-btn{margin:0}
-  .auth-or{display:flex;align-items:center;gap:10px;color:#8a6d4a;font-size:10.5px;font-weight:700;letter-spacing:1.6px;margin:12px 0}
+  .auth-or{display:flex;align-items:center;gap:10px;color:#6f5535;font-size:10.5px;font-weight:700;letter-spacing:1.6px;margin:12px 0}
   .auth-or:before,.auth-or:after{content:'';flex:1;height:1px;background:#e2d0ab}
   .auth-links{display:grid;grid-template-columns:1fr;gap:6px;margin-top:11px}
   .alnk{background:none;border:1px dashed #d9c193;border-radius:10px;padding:9px 10px;font:600 12.3px 'Poppins','Baloo Da 2',sans-serif;color:var(--maroon2);cursor:pointer;transition:.18s;width:100%}
@@ -449,14 +488,14 @@
   .cmp summary::-webkit-details-marker{display:none}
   .cmp summary:hover{color:var(--maroon)}
   .cmp-in{border-top:1px dashed #e2d0ab;padding-top:10px}
-  .cmp h6{text-align:center;font-size:11px;font-weight:700;color:#8a6d4a;margin:0 0 8px}
+  .cmp h6{text-align:center;font-size:11px;font-weight:700;color:#6f5535;margin:0 0 8px}
   .cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .cmp-col{border:1px solid #e2d0ab;border-radius:11px;padding:10px 11px;font-size:11px;line-height:1.6;background:#fff}
   .cmp-col.acct{border:1.5px solid var(--gold);background:#fffaf0;box-shadow:0 4px 14px rgba(233,182,77,.2)}
   .cmp-col h5{margin:0 0 5px;font-size:10px;letter-spacing:1.1px;color:var(--maroon)}
   .cmp-col .y{color:#2f6b46}
   .cmp-col .n{color:#9c6b2b}
-  .cmp-note{text-align:center;font-size:11px;color:#8a6d4a;margin-top:9px}
+  .cmp-note{text-align:center;font-size:11px;color:#6f5535;margin-top:9px}
   @media(max-width:760px){
     #authOverlay{padding:0}
     .auth-modal{width:100%;height:100dvh;max-width:none;border-radius:0;border:none;box-shadow:none;display:flex;flex-direction:column;animation:none}
@@ -476,7 +515,6 @@
     .auth-right{border-radius:0;flex:1;min-height:0;padding:13px 18px calc(16px + env(safe-area-inset-bottom,0px))}
     .conv-banner{padding:8px 10px;font-size:11px;margin-bottom:9px}
     .prov-btn{padding:10px 12px;font-size:12.8px;margin-bottom:8px;border-radius:10px}
-    .prov2{gap:8px}
     .auth-or{margin:9px 0}
     .gcard{padding:10px 12px}
     .gcard p{margin-bottom:9px}
@@ -503,14 +541,25 @@
   .prov-btn.g .ic{background:#fff;border:1px solid #eee;color:#4285f4;font-weight:800}
   .prov-btn.f .ic{background:#1877f2}
   .prov-btn.e .ic{background:var(--maroon2)}
-  .prov-btn.p .ic{background:#0f766e}
-  .auth-div{display:flex;align-items:center;gap:10px;color:#8a6d4a;font-size:11.5px;margin:14px 0}
+  .auth-div{display:flex;align-items:center;gap:10px;color:#6f5535;font-size:11.5px;margin:14px 0}
   .auth-div:before,.auth-div:after{content:'';flex:1;height:1px;background:#e2d0ab}
-  .auth-form label{display:block;font-size:12px;font-weight:700;color:#8a6d4a;margin-top:6px}
+  .auth-form label{display:block;font-size:12px;font-weight:700;color:#6f5535;margin-top:6px}
   .auth-form input{width:100%;border:1.5px solid #d9c193;border-radius:10px;padding:12px;font:inherit;font-size:16px;margin:5px 0 12px;background:#fffdf6;color:#3f2703}
   .auth-note{font-size:11px;color:#a08553;text-align:center;margin-top:12px;line-height:1.5}
   .guest-link{width:100%;text-align:center;background:none;border:none;color:var(--maroon2);font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;padding:10px;text-decoration:underline}
-  .back-link{background:none;border:none;color:#8a6d4a;font:inherit;font-size:12.5px;cursor:pointer;margin-bottom:10px;padding:0}
+  .back-link{background:none;border:none;color:#6f5535;font:inherit;font-size:12.5px;cursor:pointer;margin-bottom:10px;padding:0}
+  .em-err{display:none;color:#9c2b2b;font-size:13px;font-weight:600;margin:0 0 8px;line-height:1.5;text-align:left}
+  .pw-wrap{position:relative}
+  .pw-wrap input{padding-right:74px}
+  .pw-toggle{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;font:600 12px 'Poppins','Baloo Da 2',sans-serif;color:#8a6a3f;cursor:pointer;padding:8px 10px;min-height:36px}
+  .ehint{font-size:11.5px;color:#8a6a3f;margin:-4px 0 10px;line-height:1.5;text-align:left}
+  .ecode-row{display:flex;gap:8px;justify-content:flex-start;margin:6px 0 4px}
+  .ecode-b{width:42px;height:50px;text-align:center;font-size:20px;font-weight:800;color:var(--maroon);border:1.5px solid #d9c193;border-radius:10px;background:#fffdf6;padding:0}
+  .ecode-b:focus{outline:2px solid var(--gold);outline-offset:1px}
+  .conf-box{text-align:left}
+  .conf-mail{word-break:break-word;font-weight:800;color:var(--maroon);font-size:14.5px;margin:2px 0 8px}
+  .mini[disabled]{opacity:.55;cursor:default}
+  @media(max-width:360px){.ecode-row{gap:5px}.ecode-b{width:35px;height:46px;font-size:18px}}
   .modal.wide{max-width:860px}
   #panelContent .modal-body{padding:18px 22px 26px}
   .ptabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 6px}
@@ -528,14 +577,14 @@
   .mp-item{display:flex;align-items:center;gap:7px;padding:6px 0;border-bottom:1px dashed #eadfc4;font-size:13px;color:#4a3316}
   .mp-item.done .nm{text-decoration:line-through;opacity:.55}
   .mp-item .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .mp-item button{background:none;border:none;cursor:pointer;font-size:12px;padding:2px 3px;color:#8a6d4a}
+  .mp-item button{background:none;border:none;cursor:pointer;font-size:12px;padding:2px 3px;color:#6f5535}
   .mp-item button:hover{color:var(--maroon)}
   .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(122px,1fr));gap:10px;margin:12px 0}
   .statgrid .sg{background:#fffdf6;border:1.5px solid #e2d0ab;border-radius:12px;padding:12px;text-align:center}
   .statgrid .sg b{display:block;font-size:20px;color:var(--maroon)}
-  .statgrid .sg span{font-size:11px;color:#8a6d4a}
+  .statgrid .sg span{font-size:11px;color:#6f5535}
   .set-row{margin-bottom:16px}
-  .set-row label{display:block;font-size:12px;font-weight:700;color:#8a6d4a;margin-bottom:5px}
+  .set-row label{display:block;font-size:12px;font-weight:700;color:#6f5535;margin-bottom:5px}
   .set-row input[type=text]{width:100%;border:1.5px solid #d9c193;border-radius:10px;padding:11px;font:inherit;font-size:16px;background:#fffdf6;color:#3f2703}
   .switch{position:relative;width:46px;height:26px;flex:0 0 auto;display:inline-block;vertical-align:middle}
   .switch input{opacity:0;width:0;height:0}
@@ -546,7 +595,7 @@
   .d-acts{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
   .mini2.act-heart.on{background:var(--maroon2);color:#fff;border-color:var(--maroon2)}
   .mini2.act-vis.on{background:#0f766e;color:#fff;border-color:#0f766e}
-  .emptybox{text-align:center;padding:34px 14px;color:#8a6d4a}
+  .emptybox{text-align:center;padding:34px 14px;color:#6f5535}
   .emptybox .big{font-size:38px;margin-bottom:8px}
 /* ---------- my pujo feature section ---------- */
   .mp-box{background:radial-gradient(circle at 20% 20%,#7a1a1a,var(--maroon) 70%);border:1px solid rgba(233,182,77,.25);border-radius:26px;max-width:1160px;margin:0 auto;padding:52px 40px 44px;text-align:center;position:relative;overflow:hidden}
@@ -570,25 +619,31 @@
     body{background:#fff}
     .hero{min-height:auto;background:var(--maroon)}
     .hero img.bg{height:230px}
-    .filterbar,.ticker,.hero-cta,.mp-box,.toast,.overlay,.saved-pill,.lang-btn,nav{display:none!important}
+    .filterbar,.ticker,.hero-cta,.mp-box,.toast,.overlay,.saved-pill,.lang-btn,nav,footer{display:none!important}
     section{padding:26px 0}
     .card,.pair,.drow{box-shadow:none;break-inside:avoid}
     .grid{grid-template-columns:repeat(2,1fr)}
+    /* P25 · actions and floating UI never print */
+    .ps-fab,.ps-bar,.dir-search-btn,.sv-btn,.mini2,.dir-btn,.mini,.moreEats,#morePand,.d-eats .d-eat{display:none!important}
+    .d-eat{display:inline;border:0;background:none;padding:0;font-weight:700;color:#4a0d0d}
+    .d-eats{gap:2px}
+    .d-toprow .d-chips{margin-left:0}
+    .d-note,.d-addr,.d-best{color:#3f2a14}
   }
 
 /* ===== P11 · tabbed auth redesign ===== */
 .auth-right{display:flex;flex-direction:column}
 #authBox{display:flex;flex-direction:column;flex:1;min-height:0;width:100%;text-align:left}
 .authtabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#f6ecd7;border:1px solid #e8d7b4;border-radius:12px;padding:4px;margin:2px 0 14px}
-.atab{min-height:40px;border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 6px;font:700 13px 'Poppins','Baloo Da 2',sans-serif;color:#8a6d4a;cursor:pointer;transition:.18s;white-space:nowrap}
+.atab{min-height:40px;border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 6px;font:700 13px 'Poppins','Baloo Da 2',sans-serif;color:#6f5535;cursor:pointer;transition:.18s;white-space:nowrap}
 .atab:hover{color:var(--maroon)}
 .atab.on{background:#fff;color:var(--maroon);border-color:var(--gold);box-shadow:0 2px 10px rgba(74,13,13,.13)}
 .tabhead{margin:0 0 13px}
 .t-h{margin:0 0 4px;font-family:'Baloo Da 2',cursive;font-size:21px;line-height:1.2;font-weight:700;color:var(--maroon)}
-.t-p{margin:0;font-size:12.5px;line-height:1.5;color:#8a6d4a}
+.t-p{margin:0;font-size:12.5px;line-height:1.5;color:#6f5535}
 #authBox .prov-btn{margin-bottom:7px;padding:10px 12px;font-size:13px;min-height:42px}
-#authBox .prov2{margin-bottom:0}
-.swaplink{background:none;border:none;padding:9px 4px;margin:2px 0 0;font:600 12.5px 'Poppins','Baloo Da 2',sans-serif;color:#8a6d4a;cursor:pointer;text-align:center;width:100%;min-height:36px}
+#authBox .prov-btn.loading,#authBox .prov-btn[disabled]{opacity:.6;pointer-events:none}
+.swaplink{background:none;border:none;padding:9px 4px;margin:2px 0 0;font:600 12.5px 'Poppins','Baloo Da 2',sans-serif;color:#6f5535;cursor:pointer;text-align:center;width:100%;min-height:36px}
 .swaplink b{color:var(--maroon2);font-weight:700;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:2px}
 .swaplink:hover b{color:var(--maroon)}
 .gstrip{margin-top:auto;padding-top:11px;border-top:1px dashed #e2d0ab;display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -664,8 +719,99 @@
 .rt-row .grow{flex:1;min-width:0}
 .rt-row b{font-size:13px;color:var(--maroon)}
 .rt-n{width:22px;height:22px;flex:0 0 auto;background:var(--maroon2);color:#f7d98b;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px}
-.tm{font-size:11px;color:#8a6d4a;font-weight:700}
+.tm{font-size:11px;color:#6f5535;font-weight:700}
 @media(max-width:640px){.mp-ctl select{max-width:84px}.rt-svg{max-width:100%}}
+
+/* ===== P19 · profile/auth UX fixes (squeezed names, keyboard-aware auth, avatar) ===== */
+/* #2 saved-place names must wrap across words, never letter-stack:
+   on narrow screens let the actions row drop to its own line and give the
+   name column real basis. Desktop (>=761px) keeps the original single-line layout. */
+@media(max-width:760px){
+  .sv-row{flex-wrap:wrap}
+  .sv-row .grow{flex:1 1 170px}
+}
+/* #1 keyboard-aware auth: the right pane becomes its own scroll area so the
+   focused field + buttons can always be scrolled above the on-screen keyboard */
+@media(max-width:760px){
+  .auth-right{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+  /* the brand block keeps its height; the form pane takes exactly the rest —
+     never overflows the modal (which previously pushed the submit button
+     off-screen on short/keyboard-open viewports; the old min-height:448px
+     forced the grid past the viewport once the keyboard was up) */
+  .auth-grid{grid-template-rows:auto minmax(0,1fr);min-height:0}
+}
+
+/* ===== P20 · pandal card polish — name hierarchy + tappable Save ===== */
+/* single-column card on every width; the zone left-border identity stays */
+.drow{display:block;padding:16px 16px 14px}
+/* header row: name is the primary element; Save/✓ sit beside it when space
+   allows and wrap below it (right-aligned) on narrow cards */
+.d-head{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:flex-start;justify-content:space-between}
+/* P25 · name first, then one row: Save + ✓ left, category chips right */
+.d-toprow{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-top:2px}
+.d-toprow .d-acts{margin-left:0;margin-top:0}
+.d-toprow .d-chips{margin:0;margin-left:auto}
+@media(max-width:430px){
+  /* narrow screens: the Save button and the category badge share the first line;
+     ⏳/zone chips wrap gracefully beneath instead of pushing the row apart */
+  .d-toprow .d-chips{display:contents}
+}
+.d-name{flex:1 1 auto;min-width:0;font-family:'Baloo Da 2','Nirmala UI',sans-serif;font-weight:600;font-size:19px;line-height:1.3;margin:0;color:var(--maroon);letter-spacing:0;overflow-wrap:break-word;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.d-star{font-size:15px}
+.d-acts{flex:0 0 auto;display:flex;gap:7px;align-items:center;margin-left:auto}
+/* compact Save pill — icon+text, 38px touch target, saved state in card maroon */
+.sv-btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 13px;border-radius:12px;border:1px solid #ddc79c;background:#fff;font:inherit;font-size:12.8px;font-weight:700;color:var(--maroon3);cursor:pointer;white-space:nowrap;transition:.18s}
+.sv-btn:hover{background:#fdf1da}
+.sv-btn.on{background:var(--maroon2);border-color:var(--maroon2);color:#fff}
+/* visited check becomes a matching bordered icon button */
+.d-acts .mini2{width:38px;height:38px;min-height:38px;display:inline-flex;align-items:center;justify-content:center;padding:0;margin-top:0;border:1px solid #ddc79c;border-bottom:1px solid #ddc79c;background:#fff;border-radius:12px;font-size:14.5px;color:#6f5535}
+.d-acts .mini2:hover{color:var(--maroon)}
+.d-acts .mini2.act-vis.on{background:#0f766e;color:#fff;border-color:#0f766e}
+/* chips get their own quiet row under the name */
+.d-chips{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0 0}
+.d-note{margin-top:6px}
+.d-eats{margin-top:9px;align-items:flex-start}
+/* P21 · Get Directions = real button (secondary to name/save, clearly tappable) */
+.dir-btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border-radius:12px;border:1px solid #d9b56a;background:linear-gradient(135deg,#fff8e8,#fdf1d2);font:inherit;font-size:12.8px;font-weight:700;color:var(--maroon3);cursor:pointer;white-space:nowrap;text-decoration:none;transition:.18s}
+.dir-btn:hover{background:#fdf0d0;border-color:#c9971c}
+.drow>.dir-btn{margin-top:10px;align-self:flex-start}
+.pair .dir-btn{margin-top:10px;align-self:flex-start}
+.sv-acts .dir-btn{margin-top:0}
+@media(min-width:761px){.d-name{font-size:20px}}
+/* Saved-Places rows: ✓/✕ become matching bordered icon buttons (34px) */
+.sv-acts .mini2{width:34px;height:34px;min-height:34px;display:inline-flex;align-items:center;justify-content:center;padding:0;margin-top:0;border:1px solid #ddc79c;border-bottom:1px solid #ddc79c;background:#fff;border-radius:10px;font-size:14px;color:#6f5535}
+.sv-acts .mini2:hover{color:var(--maroon);background:#fdf1da}
+.sv-acts .mini2.act-vis.on{background:#0f766e;color:#fff;border-color:#0f766e}
+/* fuel-pair cards carry pandal names too — same hierarchy treatment */
+.pair .pandal{font-weight:600;font-size:16px;line-height:1.32}
+
+/* ===== P21 · anchored search controls + visible Search button ===== */
+.search input{flex:1;min-width:0;width:auto}
+.s-go{flex:0 0 auto;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.12);color:var(--cream);font:700 12.5px 'Poppins','Baloo Da 2','Segoe UI',system-ui,sans-serif;cursor:pointer;transition:.18s}
+.s-go:hover{border-color:var(--gold);color:#fff;background:rgba(255,255,255,.18)}
+
+/* ===== P22 · search sits beside the Filters toggle; collapses into a button ===== */
+.filter-in .search{margin-left:auto;flex:1 1 200px;max-width:480px;min-width:0;width:auto;order:0}
+@media(max-width:400px){.filter-in .search{flex:1 1 150px}}
+.filter-in .search .s-ic{flex:0 0 auto}
+.filter-in .tabs,.filter-in .chips{flex:1 1 100%}
+/* collapsed state: the search bar turns into a compact Search button */
+.filterbar.collapsed .filter-in .search{flex:0 0 auto}
+.filterbar.collapsed:not(.search-open) .filter-in .search input,.filterbar.collapsed:not(.search-open) .filter-in .search .s-go,.filterbar.collapsed:not(.search-open) .filter-in .search .s-ic{display:none}
+.s-mini{display:none;flex:0 0 auto;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.12);color:var(--cream);font:700 12.5px 'Poppins','Baloo Da 2','Segoe UI',system-ui,sans-serif;cursor:pointer;transition:.18s}
+.s-mini:hover{border-color:var(--gold);color:#fff;background:rgba(255,255,255,.18)}
+.filterbar.collapsed:not(.search-open) .filter-in .search .s-mini{display:inline-flex}
+
+/* search-open: only the input opens — tabs/chips (filter options) stay hidden */
+.filterbar.search-open .filter-in .tabs,.filterbar.search-open .filter-in .chips{display:none}
+.filterbar.collapsed.search-open .filter-in .search{flex:1 1 200px;max-width:480px}
+.filterbar.collapsed.search-open .filter-in .search .s-mini{display:none}
+.s-x{display:none;flex:0 0 auto;width:34px;height:34px;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.1);color:var(--cream);font-size:14px;cursor:pointer;transition:.18s}
+.s-x:hover{border-color:var(--gold);color:#fff}
+.filterbar.search-open .filter-in .search .s-x{display:inline-flex}
+/* pandal dir-bar: right-aligned search entry button */
+.dir-search-btn{margin-left:auto;display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--cream);font:700 12.8px 'Poppins','Baloo Da 2','Segoe UI',system-ui,sans-serif;cursor:pointer;transition:.18s;white-space:nowrap}
+.dir-search-btn:hover{border-color:var(--gold);color:#fff;background:rgba(255,255,255,.14)}
 </style>
 </head>
 <body>
@@ -741,6 +887,7 @@
 <div class="filterbar" id="filterbar">
   <div class="filter-in">
     <button class="fbtn" id="fToggle" type="button" onclick="toggleFilters()" aria-expanded="true" title="Show / hide filters">🎛️ <span data-i18n="f_lbl">Filters</span> <b id="fArrow">▾</b></button>
+    <div class="search"><span class="s-ic">🔍</span><input id="q" type="text" data-i18n-ph="search_ph" placeholder="Search dish, name, area…"><button type="button" class="s-go" data-i18n="btn_search" onclick="searchEatsGo()">Search</button><button type="button" class="s-mini" onclick="openFoodSearch()">🔍 <span data-i18n="btn_search">Search</span></button><button type="button" class="s-x" onclick="closeFoodSearch()" aria-label="Close search">✕</button></div>
       <div class="tabs" id="tabs">
       <button class="tab on" data-cat="all" data-i18n="tab_all">All</button>
       <button class="tab" data-cat="bengali" data-i18n="tab_bengali">🍛 Bengali Classics</button>
@@ -755,7 +902,6 @@
       <button class="chip" data-tag="latenight" data-i18n="chip_late">🌙 Late night</button>
       <button class="chip" data-tag="gift" data-i18n="chip_gift">🎁 Gift boxes</button>
     </div>
-    <div class="search">🔍<input id="q" type="text" data-i18n-ph="search_ph" placeholder="Search dish, name, area…"></div>
   </div>
 </div>
 
@@ -788,7 +934,7 @@
       <button class="tab" data-zone="n24" data-i18n="z_n24">N. Suburbs</button>
       <button class="tab" data-zone="hg" data-i18n="z_hg">Hooghly</button>
     </div>
-    <div class="search">🔍<input id="dq" type="text" data-i18n-ph="dir_search_ph" placeholder="Search pandal, para, metro…"></div>
+    <button type="button" class="dir-search-btn" onclick="openPandalSearch()" title="Search pandals">🔍 <span data-i18n="btn_search">Search</span></button>
   </div>
   <div class="dir-count" id="dirCount"></div>
   <div class="dlist" id="dlist"></div>
@@ -832,23 +978,46 @@
   </div>
 </section>
 
-<footer>
+<footer id="siteFooter">
   <div class="foot-in">
-    <div style="max-width:300px">
-      <h4>🪔 PujoSathi</h4>
-      <p data-i18n="foot_about">A labour of love for Kolkata's Pujo plates. Editorial picks, not ads — featured cards are always labelled.</p>
+    <div class="f-brand">
+      <div class="f-logo"><span class="lg-badge" aria-hidden="true">🪔</span><b>Pujo<span>Sathi</span></b></div>
+      <p class="f-desc" data-i18n="foot_about">Your guide to Kolkata&rsquo;s Puja pandals, food spots and Pujo plans.</p>
+      <p class="f-city" data-i18n="foot_city">Kolkata &middot; Durga Puja 2026</p>
     </div>
-    <div>
-      <h4 data-i18n="foot_explore">Explore</h4>
-      <a href="#eat" data-i18n="f_eat">The shortlist</a><a href="#pandals" data-i18n="f_pandals">Pandal pairings</a><a href="#days" data-i18n="f_days">Pujo days</a>
-    </div>
-    <div>
-      <h4 data-i18n="foot_say">Say namaskar</h4>
-      <a href="/cdn-cgi/l/email-protection#1078757c7c7f5060657a7f63716478793e797e"><span class="__cf_email__" data-cfemail="f49c9198989bb484819e9b8795809c9dda9d9a">[email&#160;protected]</span></a>
-      <a href="#" onclick="waInfo();return false" data-i18n="f_wa">WhatsApp us</a>
+    <nav class="f-col" aria-labelledby="fh-explore">
+      <h4 id="fh-explore" data-i18n="foot_explore">Explore</h4>
+      <a href="#eat" data-i18n="f_eat">Food &amp; Restaurants</a>
+      <a href="#pandals" data-i18n="f_pandals">Pandal Hopping</a>
+      <a href="#days" data-i18n="f_days">Pujo Days</a>
+      <button type="button" onclick="openSaved()" data-i18n="f_saved">Saved Places</button>
+      <button type="button" onclick="openMyPujo()" data-i18n="f_mp">My Pujo</button>
+    </nav>
+    <nav class="f-col" aria-labelledby="fh-help">
+      <h4 id="fh-help" data-i18n="foot_help">Help</h4>
+      <button type="button" onclick="infoModal('hiw')" data-i18n="f_hiw">How PujoSathi Works</button>
+      <button type="button" onclick="infoModal('savemp')" data-i18n="f_savemp">Save &amp; My Pujo</button>
+      <button type="button" onclick="infoModal('guest')" data-i18n="f_guest">Guest vs Account</button>
+      <a href="/cdn-cgi/l/email-protection#1078757c7c7f5060657a7f63716478793e797e" data-i18n="f_contact">Contact Us</a>
+    </nav>
+    <nav class="f-col legal" aria-labelledby="fh-legal">
+      <h4 id="fh-legal" data-i18n="foot_legal">Legal</h4>
+      <a href="/privacy/index.html" data-i18n="f_priv">Privacy Policy</a>
+      <a href="/terms/index.html" data-i18n="f_terms">Terms of Use</a>
+      <button type="button" onclick="infoModal('disc')" data-i18n="f_disc">Disclaimer</button>
+    </nav>
+  </div>
+  <div class="foot-bottom">
+    <div class="fb-in">
+      <div class="fb-line">
+        <span data-i18n-html="f_copy">&copy; 2026 PujoSathi</span><span class="dot" aria-hidden="true">&middot;</span>
+        <span data-i18n-html="f_made">Made with ❤️ in Kolkata</span>
+      </div>
+      <span class="f-note" data-i18n="f_edit">Listings are editorial. Please verify timings before visiting.</span>
+      <span class="f-credits" data-i18n="f_credits">Some illustrations on PujoSathi are AI-generated.</span>
+      <span class="fb-legal"><a href="/privacy/index.html" data-i18n="f_priv">Privacy Policy</a><span class="dot" aria-hidden="true">&middot;</span><a href="/terms/index.html" data-i18n="f_terms">Terms of Use</a><span class="dot" aria-hidden="true">&middot;</span><button type="button" onclick="infoModal('disc')" data-i18n="f_disc">Disclaimer</button></span>
     </div>
   </div>
-  <div class="copyright" data-i18n-html="copyright">Made with ❤️ &amp; mustard oil in Kolkata · Durga Puja 2026 · Listings are editorial; verify hours before you go · Illustrations AI-generated</div>
 </footer>
 
 <!-- ================= MODALS ================= -->
@@ -911,7 +1080,7 @@ en:{
  eat_p:'Editorial picks only — the places Kolkatans actually queue at when the dhak starts. ♡ save your list, print it, take it pandal-hopping.',
  tab_all:'All',tab_bengali:'🍛 Bengali Classics',tab_biryani:'🍗 Biryani & Mughlai',tab_street:'🌯 Street Legends',tab_mishti:'🍮 Mishti & Sweets',tab_cafe:'☕ Park Street & Café',
  chip_deals:'🔥 Pujo deals',chip_veg:'🌿 Vegetarian',chip_late:'🌙 Late night',chip_gift:'🎁 Gift boxes',
- search_ph:'Search dish, name, area…',f_lbl:'Filters',more:'View more ⌄',au_new:'New to PujoSathi? Create a free account',au_have:'Already have an account? Log in',tab_login:'Log In',tab_signup:'Create Account',lw_h:'Welcome back!',lw_p:'Log in to access your saved places and My Pujo.',cw_h:'Make Pujo Yours 🪔',cw_p:'Create your free account to save your favourite places and build your My Pujo.',swap_cu:'Don\u2019t have an account? <b>Create one</b>',swap_li:'Already have an account? <b>Log in</b>',ge_q:'Just exploring?',ge_n:'Browse freely \u2022 Save up to 3 pandals and 3 food spots on this device.',dempty:'No pandals match — try another spelling or zone 🙂',
+ search_ph:'Search dish, name, area…',btn_search:'Search',f_lbl:'Filters',more:'View more ⌄',au_new:'New to PujoSathi? Create a free account',au_have:'Already have an account? Log in',tab_login:'Log In',tab_signup:'Create Account',lw_h:'Welcome back!',lw_p:'Log in to access your saved places and My Pujo.',cw_h:'Make Pujo Yours 🪔',cw_p:'Create your free account to save your favourite places and build your My Pujo.',swap_cu:'Don\u2019t have an account? <b>Create one</b>',swap_li:'Already have an account? <b>Log in</b>',ge_q:'Just exploring?',ge_n:'Browse freely \u2022 Save up to 3 pandals and 3 food spots on this device.',dempty:'No pandals match — try another spelling or zone 🙂',
  nav_mypujo:'My Pujo',nav_signin:'Sign In',
  acct_profile:'My Profile',acct_saved:'My Saved Places',acct_mypujo:'My Pujo',acct_settings:'Settings',acct_logout:'Log Out',
  auth_h:'Make Pujo Yours <span class="diya">🪔</span>',auth_p:'Save your favourite pandals and food spots, build your Pujo plan, and keep everything with you.',
@@ -931,9 +1100,14 @@ en:{
  cg1:'Browse everything',cg2:'Search & filters',cg3:'Maps & directions',cg4:'Save up to 3 pandals',cg5:'Save up to 3 restaurants',cg6:'No personal information required',cgx1:'No My Pujo',cgx2:'No cross-device sync',cgx3:'No unlimited saves',
  cmp_note:'Your choice. No pressure.',gl_h:'You\u2019ve reached your Guest limit ❤️',gl_p1:'You\u2019ve already saved {p} pandals and {f} food spots.',gl_p2:'Create a free account to save unlimited places and build your My Pujo.',gl_other:'Other sign-in options',gl_explore:'Continue Exploring',mig_h:'Keep your saved places',mig_p:'Your Guest favourites are ready to move to your account.',mig_btn:'Save to My Account',mig_no:'Not now',
  conv_h:'Keep your Pujo plans everywhere',conv_p:'{n} saved places are waiting on this device — sign in to keep them everywhere.',
- auth_google:'Continue with Google',auth_fb:'Continue with Facebook',auth_email:'Continue with Email',auth_phone:'Continue with Mobile',auth_guest:'Continue as Guest',
+ auth_google:'Continue with Google',auth_fb:'Continue with Facebook',auth_email:'Continue with Email',auth_guest:'Continue as Guest',
  em_name:'Your name',em_pass:'Password',em_signup:'Create Account',em_login:'Log In',
- ph_send:'Send OTP',ph_verify:'Verify & continue',otp_note:'Demo mode: no SMS gateway connected, so the OTP is shown on screen. Connect a provider (see SETUP-AUTH.md) for real SMS.',
+ fb_connecting:'Connecting to Facebook…',fb_err_cancel:'Facebook sign-in was cancelled. You can try again or use another sign-in method.',fb_err_fail:'We can\u2019t complete Facebook sign-in right now. Please try again.',fb_err_net:'Something went wrong. Please check your connection and try again.',
+ ef_lh:'Log in with Email',ef_sh:'Create your free account',em_ph:'Enter your email',pw_ph_l:'Enter your password',pw_ph_s:'Create a password',pw_show:'Show',pw_hide:'Hide',em_hint:'Use at least {n} characters.',em_forgot:'Forgot password?',em_err_mail:'Please enter a valid email address.',em_err_pw:'Email or password is incorrect.',em_err_exists:'An account with this email already exists — please log in.',em_err_conf:'Please confirm your email before continuing.',em_err_expired:'This verification link/code has expired. Please request a new one.',em_err_code:'That code isn\u2019t correct. Please try again.',em_err_many:'Too many attempts. Please wait a moment and try again.',em_err_net:'Something went wrong. Please try again.',em_err_mailer:'Password reset emails aren\u2019t available in this environment.',
+ conf_h:'Check your email 📬',conf_p1:'We\u2019ve sent a confirmation link to:',conf_p2:'Please check your inbox and click the confirmation link to activate your PujoSathi account.',conf_open:'Open Email',conf_q:'Didn\u2019t receive the email?',conf_resend:'Resend Confirmation Email',cool_in:'Resend available in {s}s',
+ otp_h:'Check your email 🔐',otp_p1:'We sent a 6-digit verification code to:',otp_lbl:'Email verification code',otp_verify:'Verify Email',otp_q:'Didn\u2019t receive the code?',otp_resend:'Resend Code',
+ rst_h:'Reset your password',rst_p:'Enter your email and we\u2019ll send you a reset link.',rst_send:'Send Reset Email',rst_sent_h:'Check your email 📬',rst_sent_p:'We\u2019ve sent you a password reset link.',
+
  gate_h:'Keep your Pujo plans everywhere',gate_p:'Create a free account to save your favourites, build your Pujo itinerary and access your plans from any device. You can also keep exploring as a guest — saves stay on this device.',
  gate_create:'Create Free Account',gate_guest:'Continue as Guest',guest_lim:'Try the Save feature with limited favourites.',
  sv_food:'Food',sv_pandals:'Pandals',sv_details:'Details',sv_addplan:'Add to My Pujo',mark_visited:'Mark as visited',btn_visited:'Visited',
@@ -942,7 +1116,7 @@ en:{
  mp_privatesafe:'Place names only — no personal info',mp_privatenote:'Anyone with this link sees the plan. Your name, contact and account stay private.',
  sh_h:'A shared Pujo plan',
  set_sub:'Your account, your data',set_name:'Name',set_photo:'Profile photo',set_contact:'Email & mobile',set_privacy:'Itinerary visibility',set_privacy_d:'Private by default. Turn on to allow creating a share link.',set_save:'Save changes',set_delete:'Delete account',del_confirm:'Delete your account and all saved data? This cannot be undone.',
- prov_google:'Google account',prov_facebook:'Facebook account',prov_email:'Email account',prov_mobile:'Mobile account',prov_guest:'Guest',
+ prov_google:'Google account',prov_facebook:'Facebook account',prov_email:'Email account',prov_mobile:'Mobile account',prov_oauth:'Google/Facebook account',prov_guest:'Guest',
  mph:'🪔 Make Pujo Yours',mpp:'Plan your Pujo your way. Save your favourite places, organise your Pujo days, and keep your entire Pujo plan in one place.',
  mpf1:'Save Unlimited Places',mpd1:'Save all your favourite pandals and food spots.',
  mpf2:'Plan by Pujo Day',mpd2:'Organise your plans for Shashthi, Saptami, Ashtami, Navami and Dashami.',
@@ -968,15 +1142,32 @@ en:{
  pl1:'Pujo Feature',pl1a:'Featured card for the full Pujo week',pl1b:'Deal badge on your listing',pl1c:'Map pin + directions',
  pl2:'Pujo + Season',pl2a:'Everything in Pujo Feature',pl2b:'Listed till Lakshmi Puja + Kali Pujo',pl2c:'Spotlight in 2 social posts',pl2d:'Photo & menu updates anytime',
  pl3:'Para Legend',pl3a:'Season listing till Dec',pl3b:'Top-of-category placement',pl3c:'4 social features',pl3d:'Custom deal campaigns',
- foot_about:'A labour of love for Kolkata\u2019s Pujo plates. Editorial picks, not ads — featured cards are always labelled.',
- foot_explore:'Explore',f_eat:'The shortlist',f_pandals:'Pandal hopping',f_days:'Pujo days',
- foot_rest:'Restaurants',
- foot_say:'Say namaskar',f_wa:'WhatsApp us',
- copyright:'Made with ❤️ &amp; mustard oil in Kolkata · Durga Puja 2026 · Listings are editorial; verify hours before you go · Illustrations AI-generated',
+ foot_about:'Your guide to Kolkata\u2019s Puja pandals, food spots and Pujo plans.',
+ foot_city:'Kolkata \u00b7 Durga Puja 2026',
+ foot_explore:'Explore',f_eat:'Food & Restaurants',f_pandals:'Pandal Hopping',f_days:'Pujo Days',
+ f_saved:'Saved Places',f_mp:'My Pujo',
+ foot_help:'Help',f_hiw:'How PujoSathi Works',f_savemp:'Save & My Pujo',f_guest:'Guest vs Account',f_contact:'Contact Us',
+ foot_legal:'Legal',f_priv:'Privacy Policy',f_terms:'Terms of Use',f_disc:'Disclaimer',
+ f_copy:'\u00a9 2026 PujoSathi',f_made:'Made with \u2764\ufe0f in Kolkata',
+ f_edit:'Listings are editorial. Please verify timings before visiting.',
+ f_credits:'Some illustrations on PujoSathi are AI-generated.',
+ ih_hiw_h:'How PujoSathi Works',
+ ih_hiw_p:'PujoSathi is your companion for Kolkata\u2019s five Pujo days. Browse the food shortlist and the Pandal-Hopper\u2019s Atlas, check the day-by-day Pujo guide, and see the best eats near every pandal. Save the places you like with \u2661, then turn them into your own My Pujo plan \u2014 day wise, with directions one tap away.',
+ ih_savemp_h:'Saved Places & My Pujo',
+ ih_savemp_p:'Saved Places = places you want to remember \u2014 tap \u2661 on any card and it\u2019s kept for you. My Pujo = places you\u2019ve actually planned to visit, arranged day by day with order and directions. Save freely first; plan when Pujo nears.',
+ ih_guest_h:'Guest vs Account',
+ ih_guest_p:'Guests can browse everything freely and save a limited number of places right on this device. Sign in with a free account and your saved places stay in your account \u2014 they follow you to any device \u2014 and My Pujo opens up: save and plan without limits.',
+ ih_priv_h:'Privacy Policy',
+ ih_priv_p:'Your plans are yours. Saved places and My Pujo plans are private by default \u2014 nothing is visible to anyone unless you choose to share a plan. We never sell data and never post anywhere on your behalf; sign-in uses your email only to recognise your account. Guests\u2019 saves stay on their own device only.',
+ ih_terms_h:'Terms of Use',
+ ih_terms_p:'PujoSathi is a free discovery and planning guide for Kolkata\u2019s Puja days, meant for personal use. Listings are editorial selections, not advertisements \u2014 featured spots are always labelled. Please be considerate to venues, volunteers and fellow pandal-hoppers, and follow local rules wherever you go.',
+ ih_disc_h:'Disclaimer',
+ ih_disc_p:'PujoSathi is a discovery and planning platform. Timings, menus, crowd levels, entry rules and availability change \u2014 especially during Pujo. Listings are editorial and may be out of date; PujoSathi does not guarantee any venue\u2019s timings, food availability, entry or crowd levels. Please verify before visiting, and keep a little margin in your plan.',
  toast_saved:'♡ Saved — {n} added to your Pujo list',toast_rm:'Removed from your list',
  toast_empty:'Your list is empty — tap ♡ Save on any card',
  short_title:'Your Pujo food list',short_meta:'{n} place(s) saved — print it or open all in maps',
  short_print:'🖨 Print / save PDF',short_route:'🧭 Route all in Maps',
+ short_connect:'🔗 Connect Everyplace',
  spot_must:'Must-try',spot_close:'Close',
  title:'PujoSathi — Kolkata\u2019s Food Map for Durga Pujo 2026 · 17–21 Oct',
  nav_directory:'Pandal Hopping',dir_h:'The <em>Pandal-Hopper\u2019s Atlas</em>',
@@ -1000,7 +1191,7 @@ bn:{
  eat_p:'একদম বাছাই করা লিস্ট — ঢাক বাজলে কলকাতা যেখানে লাইন দেয়, ঠিক সেই ঠিকানাগুলোই। ♡ চেপে নিজের লিস্ট বানান, প্রিন্ট করে প্যান্ডেলের পথে সাথে রাখুন।',
  tab_all:'সব',tab_bengali:'🍛 বাঙালির চেনা খানা',tab_biryani:'🍗 বিরিয়ানি ও মোঘলাই',tab_street:'🌯 রাস্তার কিংবদন্তি',tab_mishti:'🍮 মিষ্টির দোকান',tab_cafe:'☕ পার্ক স্ট্রিট ও ক্যাফে',
  chip_deals:'🔥 পুজো ডিল',chip_veg:'🌿 নিরামিষ',chip_late:'🌙 রাত গভীর পর্যন্ত',chip_gift:'🎁 গিফট বক্স',
- search_ph:'খাবার, দোকান, পাড়া লিখুন…',f_lbl:'ফিল্টার',more:'আরও দেখুন ⌄',au_new:'PujoSathi নতুন? ফ্রি অ্যাকাউন্ট খুলুন',au_have:'অ্যাকাউন্ট আছে? লগ ইন করুন',tab_login:'লগ ইন',tab_signup:'অ্যাকাউন্ট খুলুন',lw_h:'আবার স্বাগতম!',lw_p:'সেভ করা ঠিকানা আর আপনার My Pujo ফিরে পেতে লগ ইন করুন।',cw_h:'পুজো এবার, আপনার মতোই 🪔',cw_p:'ফ্রি অ্যাকাউন্ট খুলে পছন্দের ঠিকানা সেভ রাখুন, আপনার My Pujo সাজান।',swap_cu:'অ্যাকাউন্ট নেই? <b>ফ্রি খুলে নিন</b>',swap_li:'অ্যাকাউন্ট আছে? <b>লগ ইন করুন</b>',ge_q:'শুধু ঘুরে দেখছেন?',ge_n:'মনের মতো ঘুরুন • এই ডিভাইসে ৩টা প্যান্ডেল আর ৩টা খাবারের দোকান পর্যন্ত সেভ।',dempty:'এই কম্বোতে কোনো প্যান্ডেল মেলেনি — বানান বা ক্যাটেগরি বদলে দেখুন 🙂',
+ search_ph:'খাবার, দোকান, পাড়া লিখুন…',btn_search:'খোঁজ',f_lbl:'ফিল্টার',more:'আরও দেখুন ⌄',au_new:'PujoSathi নতুন? ফ্রি অ্যাকাউন্ট খুলুন',au_have:'অ্যাকাউন্ট আছে? লগ ইন করুন',tab_login:'লগ ইন',tab_signup:'অ্যাকাউন্ট খুলুন',lw_h:'আবার স্বাগতম!',lw_p:'সেভ করা ঠিকানা আর আপনার My Pujo ফিরে পেতে লগ ইন করুন।',cw_h:'পুজো এবার, আপনার মতোই 🪔',cw_p:'ফ্রি অ্যাকাউন্ট খুলে পছন্দের ঠিকানা সেভ রাখুন, আপনার My Pujo সাজান।',swap_cu:'অ্যাকাউন্ট নেই? <b>ফ্রি খুলে নিন</b>',swap_li:'অ্যাকাউন্ট আছে? <b>লগ ইন করুন</b>',ge_q:'শুধু ঘুরে দেখছেন?',ge_n:'মনের মতো ঘুরুন • এই ডিভাইসে ৩টা প্যান্ডেল আর ৩টা খাবারের দোকান পর্যন্ত সেভ।',dempty:'এই কম্বোতে কোনো প্যান্ডেল মেলেনি — বানান বা ক্যাটেগরি বদলে দেখুন 🙂',
  nav_mypujo:'আমার পুজো',nav_signin:'সাইন ইন',
  acct_profile:'আমার প্রোফাইল',acct_saved:'সেভ করা ঠিকানা',acct_mypujo:'আমার পুজো',acct_settings:'সেটিংস',acct_logout:'লগ আউট',
  auth_h:'পুজো এবার, আপনার মতোই <span class="diya">🪔</span>',auth_p:'পছন্দের প্যান্ডেল আর খাবারের ঠিকানা সেভ রাখুন, নিজের পুজো-প্ল্যান সাজান — সব আপনার সঙ্গেই থাকবে।',
@@ -1020,9 +1211,14 @@ bn:{
  cg1:'সব দেখা-খোঁজা',cg2:'সার্চ-ফিল্টার',cg3:'ম্যাপ-ডিরেকশন',cg4:'৩টা প্যান্ডেল পর্যন্ত সেভ',cg5:'৩টা দোকান পর্যন্ত সেভ',cg6:'ব্যক্তিগত তথ্য লাগে না',cgx1:'My Pujo নেই',cgx2:'ক্রস-ডিভাইস সিঙ্ক নেই',cgx3:'আনলিমিটেড সেভ নেই',
  cmp_note:'আপনার ইচ্ছা — কোনো চাপ নেই।',gl_h:'গেস্ট-লিমিট শেষ ❤️',gl_p1:'এর মধ্যেই {p}টা প্যান্ডেল আর {f}টা দোকান সেভ করে ফেলেছেন।',gl_p2:'ফ্রি অ্যাকাউন্ট খুললে যত খুশি ঠিকানা সেভ করতে পারবেন, My Pujo-ও সাজাতে পারবেন।',gl_other:'অন্য সাইন-ইন অপশন',gl_explore:'ঘোরা চালিয়ে যান',mig_h:'সেভ করা ঠিকানাগুলো সঙ্গে রাখুন',mig_p:'গেস্ট হিসেবে সেভ করা ঠিকানাগুলো অ্যাকাউন্টে তুলে নেওয়া যায়।',mig_btn:'আমার অ্যাকাউন্টে সেভ করুন',mig_no:'এখন না',
  conv_h:'পুজোর প্ল্যান সব জায়গায়',conv_p:'এই ডিভাইসে {n}টা সেভ করা ঠিকানা অপেক্ষা করছে — সাইন ইন করলেই সব ডিভাইসে মিলবে।',
- auth_google:'Google দিয়ে চালিয়ে যান',auth_fb:'Facebook দিয়ে চালিয়ে যান',auth_email:'ইমেল দিয়ে চালিয়ে যান',auth_phone:'মোবাইল নম্বর দিয়ে চালিয়ে যান',auth_guest:'গেস্ট হিসেবে ঘুরুন',
+ auth_google:'Google দিয়ে চালিয়ে যান',auth_fb:'Facebook দিয়ে চালিয়ে যান',auth_email:'ইমেল দিয়ে চালিয়ে যান',auth_guest:'গেস্ট হিসেবে ঘুরুন',
  em_name:'আপনার নাম',em_pass:'পাসওয়ার্ড',em_signup:'অ্যাকাউন্ট খুলুন',em_login:'লগ ইন',
- ph_send:'ওটিপি পাঠান',ph_verify:'যাচাই করে এগোন',otp_note:'ডেমো মোড — এসএমএস গেটওয়ে জুড়া নেই, তাই ওটিপি স্ক্রিনেই দেখাচ্ছি। আসল এসএমএসের জন্য SETUP-AUTH.md দেখুন।',
+ fb_connecting:'ফেসবুকের সঙ্গে যুক্ত হচ্ছি…',fb_err_cancel:'ফেসবুক সাইন-ইন বাতিল হয়ে গেছে। আবার চেষ্টা করুন বা অন্য ভাবে সাইন-ইন করুন।',fb_err_fail:'ফেসবুক সাইন-ইন এখন সম্পূর্ণ হচ্ছে না। আবার চেষ্টা করুন।',fb_err_net:'কিছু একটা গোলমাল হয়েছে। সংযোগ দেখে আবার চেষ্টা করুন।',
+ ef_lh:'ইমেল দিয়ে লগ ইন',ef_sh:'ফ্রি অ্যাকাউন্ট খুলুন',em_ph:'ইমেল লিখুন',pw_ph_l:'পাসওয়ার্ড লিখুন',pw_ph_s:'নতুন পাসওয়ার্ড বানান',pw_show:'দেখাও',pw_hide:'লুকাও',em_hint:'অন্তত {n} অক্ষরের পাসওয়ার্ড দিন।',em_forgot:'পাসওয়ার্ড ভুলে গেছেন?',em_err_mail:'একটা সঠিক ইমেল ঠিকানা লিখুন।',em_err_pw:'ইমেল বা পাসওয়ার্ড মেলেনি।',em_err_exists:'এই ইমেলে অ্যাকাউন্ট আছে — লগ ইন করুন।',em_err_conf:'এগোনোর আগে ইমেল কনফার্ম করুন।',em_err_expired:'ভেরিফিকেশন লিঙ্ক বা কোডের মেয়াদ শেষ — নতুন করে পাঠিয়ে নিন।',em_err_code:'কোডটা ঠিক হয়নি। আবার চেষ্টা করুন।',em_err_many:'অনেকবার চেষ্টা হয়ে গেছে। একটু থেমে আবার করুন।',em_err_net:'কিছু একটা গোলমাল হয়েছে। আবার চেষ্টা করুন।',em_err_mailer:'এই পরিবেশে পাসওয়ার্ড রিসেট ইমেল পাঠানো যায় না।',
+ conf_h:'আপনার ইমেইল দেখুন 📬',conf_p1:'আমরা একটি confirmation link পাঠিয়েছি:',conf_p2:'ইনবক্স খুলে confirmation link-এ ক্লিক করুন — তাতেই আপনার PujoSathi অ্যাকাউন্ট চালু হবে।',conf_open:'ইমেইল খুলুন',conf_q:'ইমেইল পাননি?',conf_resend:'কনফার্মেশন ইমেল আবার পাঠান',cool_in:'আবার পাঠানো যাবে {s} সেকেন্ডে',
+ otp_h:'আপনার ইমেইল দেখুন 🔐',otp_p1:'আমরা ৬-অঙ্কের verification code পাঠিয়েছি:',otp_lbl:'ইমেল ভেরিফিকেশন কোড',otp_verify:'ইমেল যাচাই করুন',otp_q:'কোড পাননি?',otp_resend:'কোড আবার পাঠান',
+ rst_h:'পাসওয়ার্ড রিসেট করুন',rst_p:'ইমেল লিখুন, আমরা রিসেট লিঙ্ক পাঠিয়ে দেব।',rst_send:'রিসেট ইমেল পাঠান',rst_sent_h:'আপনার ইমেইল দেখুন 📬',rst_sent_p:'আপনাকে পাসওয়ার্ড রিসেট লিঙ্ক পাঠিয়েছি।',
+
  gate_h:'পুজোর প্ল্যান রাখুন সব জায়গায়',gate_p:'ফ্রি অ্যাকাউন্ট খুললে পছন্দের ঠিকানা সেভ থাকবে, নিজের পুজো-রুট বানাতে পারবেন, যেকোনো ডিভাইস থেকে দেখতে পারবেন। চাইলে গেস্ট হিসেবেও ঘুরতে পারেন — সেভগুলো এই ফোনেই থাকবে।',
  gate_create:'ফ্রি অ্যাকাউন্ট খুলুন',gate_guest:'গেস্ট হিসেবে থাকুন',
  sv_food:'খাবার',sv_pandals:'প্যান্ডেল',sv_details:'ডিটেলস',sv_addplan:'আমার পুজোতে যোগ করুন',mark_visited:'দেখা হয়েছে চিহ্নিত করুন',btn_visited:'দেখা হয়েছে',
@@ -1031,7 +1227,7 @@ bn:{
  mp_privatesafe:'শুধু ঠিকানার নাম — ব্যক্তিগত কিছু নেই',mp_privatenote:'লিংক যার কাছে দেবেন, সে প্ল্যানটা দেখবে। আপনার নাম, যোগাযোগ, অ্যাকাউন্ট — কিছুই যাবে না।',
  sh_h:'শেয়ার করা একটা পুজো-প্ল্যান',
  set_sub:'আপনার অ্যাকাউন্ট, আপনার ডেটা',set_name:'নাম',set_photo:'প্রোফাইল ছবি',set_contact:'ইমেল ও মোবাইল',set_privacy:'প্ল্যান কে দেখতে পাবে',set_privacy_d:'ডিফল্টে প্রাইভেট। চালু করলে শেয়ার-লিংক বানানো যাবে।',set_save:'সেভ করুন',set_delete:'অ্যাকাউন্ট মুছে ফেলুন',del_confirm:'অ্যাকাউন্ট আর সব সেভ-ডেটা মুছে যাবে — ফেরানো যাবে না। নিশ্চিত?',
- prov_google:'গুগল অ্যাকাউন্ট',prov_facebook:'ফেসবুক অ্যাকাউন্ট',prov_email:'ইমেল অ্যাকাউন্ট',prov_mobile:'মোবাইল অ্যাকাউন্ট',prov_guest:'গেস্ট',
+ prov_google:'গুগল অ্যাকাউন্ট',prov_facebook:'ফেসবুক অ্যাকাউন্ট',prov_email:'ইমেল অ্যাকাউন্ট',prov_mobile:'মোবাইল অ্যাকাউন্ট',prov_oauth:'গুগল/ফেসবুক অ্যাকাউন্ট',prov_guest:'গেস্ট',
  mph:'🪔 পুজো এবার, আপনার মতোই',mpp:'নিজের মতো করে পুজো সাজান। পছন্দের ঠিকানা সেভ রাখুন, পুজোর দিনগুলো গুছিয়ে নিন — পুরো প্ল্যান এক জায়গায়।',
  mpf1:'যত খুশি ঠিকানা সেভ',mpd1:'পছন্দের সব প্যান্ডেল আর খাবারের দোকান সেভ করে রাখুন।',
  mpf2:'দিন ধরে ধরে প্ল্যান',mpd2:'ষষ্ঠী, সপ্তমী, অষ্টমী, নবমী, দশমী — প্রতিদিনের বেলা আগেই গুছিয়ে রাখুন।',
@@ -1062,15 +1258,32 @@ bn:{
  pl1:'পুজো ফিচার',pl1a:'পুরো পুজোর সপ্তাহে ফিচার্ড কার্ড',pl1b:'আপনার কার্ডে ডিল ব্যাজ',pl1c:'ম্যাপ পিন + রাস্তা দেখানো',
  pl2:'পুজো + সিজন',pl2a:'পুজো ফিচারের সব সুবিধা',pl2b:'লক্ষ্মী আর কালীপুজো পর্যন্ত তালিকায় থাকা',pl2c:'২টা সোশ্যাল পোস্টে প্রচার',pl2d:'খুশিমতো ছবি ও মেনু আপডেট',
  pl3:'পাড়ার কিংবদন্তি',pl3a:'ডিসেম্বর পর্যন্ত তালিকায় থাকা',pl3b:'ক্যাটাগরিতে সবার উপরে জায়গা',pl3c:'৪টা সোশ্যাল পোস্টে প্রচার',pl3d:'নিজের মতো ডিল ক্যাম্পেইন',
- foot_about:'কলকাতার পুজোর খাবারের প্রতি ভালোবাসা থেকে বানানো। এটা বিজ্ঞাপন নয়, বাছাই করা তালিকা — পেইড কার্ড আলাদা করে চিহ্নিত।',
- foot_explore:'ঘুরে দেখুন',f_eat:'শর্টলিস্ট',f_pandals:'প্যান্ডেল হপিং',f_days:'পুজোর দিন',
- foot_rest:'দোকানদারদের জন্য',
- foot_say:'যোগাযোগ',f_wa:'হোয়াটসঅ্যাপ করুন',
- copyright:'কলকাতায় ❤️ আর সর্ষের তেল দিয়ে তৈরি · দুর্গাপুজো ২০২৬ · তালিকা বাছাই করা; বেরোনোর আগে সময় মিলিয়ে নিন · ছবি AI-এর তৈরি',
+ foot_about:'কলকাতার পুজোর প্যান্ডেল, খাবারের জায়গা আর পুজোর প্ল্যান গোছানোর আপনার গাইড।',
+ foot_city:'কলকাতা · দুর্গাপুজো ২০২৬',
+ foot_explore:'ঘুরে দেখুন',f_eat:'খাবার ও রেস্টোরেন্ট',f_pandals:'প্যান্ডেল হপিং',f_days:'পুজোর দিন',
+ f_saved:'সেভ করা জায়গা',f_mp:'মাই পুজো',
+ foot_help:'সাহায্য',f_hiw:'পুজোসাথী কীভাবে কাজ করে',f_savemp:'সেভ আর মাই পুজো',f_guest:'গেস্ট না অ্যাকাউন্ট',f_contact:'যোগাযোগ করুন',
+ foot_legal:'লিগ্যাল',f_priv:'প্রাইভেসি পলিসি',f_terms:'ব্যবহারের শর্ত',f_disc:'ডিস্ক্লেইমার',
+ f_copy:'© ২০২৬ পুজোসাথী',f_made:'কলকাতায় ❤️ দিয়ে তৈরি',
+ f_edit:'তালিকাগুলো বাছাই করা; যাওয়ার আগে সময় মিলিয়ে নিন।',
+ f_credits:'পুজোসাথীর কিছু ছবি AI-এর তৈরি।',
+ ih_hiw_h:'পুজোসাথী কীভাবে কাজ করে',
+ ih_hiw_p:'পুজোসাথী কলকাতার পাঁচদিনের পুজোর সঙ্গী। খাবারের শর্টলিস্ট আর প্যান্ডেল-হপারের অ্যাটলাস ঘুরে দেখুন, দিন-ভিত্তিক পুজোর গাইড দেখুন, আর প্রতিটা প্যান্ডেলের কাছাকাছি সেরা খাবার খুঁজে নিন। পছন্দের জায়গায় ♡ চেপে সেভ করুন, তারপর সেগুলো থেকেই সাজান নিজের মাই পুজো প্ল্যান — দিন ধরে ধরে, ডিরেকশন এক ট্যাপে।',
+ ih_savemp_h:'সেভ করা জায়গা আর মাই পুজো',
+ ih_savemp_p:'সেভ করা জায়গা = যেগুলো মনে রাখতে চান — যেকোনো কার্ডে ♡ চাপলেই জমা হয়ে থাকে। মাই পুজো = যেগুলো সত্যিই ঘুরে দেখতে যাবেন, দিনের ভিত্তিতে ক্রম আর ডিরেকশন সহ সাজানো। আগে যত খুশি সেভ করুন, পুজো ঘেঁষলে প্ল্যান সাজান।',
+ ih_guest_h:'গেস্ট না অ্যাকাউন্ট',
+ ih_guest_p:'গেস্ট হিসেবে সবকিছু সচ্ছন্দে দেখা যায়, আর এই ডিভাইসে সীমিত সংখ্যক জায়গা সেভ করা যায়। ফ্রি অ্যাকাউন্টে সাইন ইন করলে সেভগুলো আপনার অ্যাকাউন্টে থাকে — ডিভাইস বদলালেও হারায় না — আর মাই পুজো খুলে যায়: যত খুশি সেভ করুন, প্ল্যান করুন।',
+ ih_priv_h:'প্রাইভেসি পলিসি',
+ ih_priv_p:'আপনার প্ল্যান আপনারই। সেভ করা জায়গা আর মাই পুজো প্ল্যান ডিফল্টে প্রাইভেট — আপনি নিজে শেয়ার না করলে কেউ দেখতে পায় না। আমরা ডেটা বিক্রি করি না, আপনার নামে কোথাও কিছু পোস্ট করি না; সাইন ইনে ইমেল লাগে শুধু অ্যাকাউন্ট চেনার জন্য। গেস্টের সেভগুলো ওদের নিজের ডিভাইসেই থাকে।',
+ ih_terms_h:'ব্যবহারের শর্ত',
+ ih_terms_p:'পুজোসাথী কলকাতার পুজোর দিনগুলোর ফ্রি ডিসকভারি আর প্ল্যানিং গাইড — ব্যক্তিগত ব্যবহারের জন্য। তালিকাগুলো সম্পাদকীয় বাছাই, বিজ্ঞাপন নয়; পেইড স্পট সবসময় চিহ্নিত থাকে। ক্লাব, বাড়ি, উৎসব কমিটি আর সঙ্গী পুজো-হপারদের প্রতি ভদ্রতা রাখুন, আর সবখানে শহরের নিয়ম মানুন।',
+ ih_disc_h:'ডিস্ক্লেইমার',
+ ih_disc_p:'পুজোসাথী একটা ডিসকভারি আর প্ল্যানিং প্ল্যাটফর্ম। সময়, মেনু, ভিড়, ঢোকার নিয়ম, কী পাওয়া যাবে কী যাবে না — পুজোর সময় সবই বদলে যায়। তালিকাগুলো সম্পাদকীয় বাছাই, পুরনো হয়ে যেতে পারে; কোনো জায়গার সময়, খাবার, প্রবেশ বা ভিড় নিয়ে পুজোসাথী গ্যারান্টি দেয় না। যাওয়ার আগে মিলিয়ে নিন, প্ল্যানে হাতে একটু সময় রাখুন।',
  toast_saved:'♡ সেভ হয়েছে — {n} এখন আপনার পুজো লিস্টে',toast_rm:'লিস্ট থেকে বাদ দেওয়া হলো',
  toast_empty:'লিস্ট এখনো খালি — যেকোনো কার্ডে ♡ সেভ চাপুন',
  short_title:'আপনার পুজো ফুড লিস্ট',short_meta:'{n}টা ঠিকানা সেভ করা — প্রিন্ট করুন বা ম্যাপে সব খুলুন',
  short_print:'🖨 প্রিন্ট / PDF সেভ',short_route:'🧭 ম্যাপে পুরো রুট',
+ short_connect:'🔗 Connect Everyplace',
  spot_must:'যা অবশ্যই খাবেন',spot_close:'বন্ধ',
  title:'পুজোইটস — দুর্গাপুজো ২০২৬-এর খাওয়া-দাওয়ার ম্যাপ · ১৭–২১ অক্টোবর'
 
@@ -1669,7 +1882,7 @@ function renderDynamic(){
      <div class="pandal">🥁 ${p.p}</div>
      <div class="link-line"><span class="down">↓</span> ${t('pair_eatat')} <b>${p.eat}</b></div>
      <p class="note">${p.why}</p>
-     <button type="button" class="mini2" data-maps="${escA(P.m)}">🧭 ${t('pair_dir')}</button></div>`;
+     <button type="button" class="dir-btn" data-maps="${escA(P.m)}">🧭 ${t('pair_dir')}</button></div>`;
   }).join('');
   const items=TICKER[LANG].map(x=>`<span>${x.replace(/\{d\}/g,dg(daysToPujo()))}</span>`).join('<span>✦</span>');
   $('#ticker').innerHTML=items+items;
@@ -1686,15 +1899,91 @@ function renderStatic(){
   applyFilters(); syncHearts(); tick();
 }
 function toggleLang(){
+  /* P21 · anchor-preserving language switch: capture what the user is looking
+     at (nearest non-sticky element with a stable id, re-created with the same
+     id by the re-render), then restore its on-screen position after the
+     reflow. Falls back to native clamping when no anchor can be found. */
+  let aid=null,aTop=0;
+  if(window.innerWidth>0){
+    outer:
+    for(const fy of [0.5,0.35,0.65,0.2,0.8,0.95]){
+      const hit=document.elementFromPoint(Math.round(window.innerWidth/2),Math.round(window.innerHeight*fy));
+      let n=hit;
+      while(n&&n!==document.body){
+        const cs=getComputedStyle(n);
+        if(n.id&&cs.position!=='sticky'&&cs.position!=='fixed'&&cs.display!=='none'){
+          aid=n.id;aTop=n.getBoundingClientRect().top;break outer;
+        }
+        n=n.parentElement;
+      }
+    }
+  }
   LANG = LANG==='en'?'bn':'en';
   try{localStorage.setItem('pujoLang',LANG)}catch(e){}
   renderStatic(); renderDynamic();
+  const restore=()=>{
+    if(!aid)return;
+    const ne=document.getElementById(aid);
+    if(!ne)return;
+    const d=ne.getBoundingClientRect().top-aTop;
+    if(Math.abs(d)>1){
+      const max=document.documentElement.scrollHeight-window.innerHeight;
+      window.scrollTo({top:Math.max(0,Math.min(window.scrollY+d,max)),behavior:'instant'});
+    }
+  };
+  requestAnimationFrame(restore);
+  setTimeout(restore,90);   /* after webfont swap reflow */
+  setTimeout(restore,260);  /* settle pass */
 }
 
 /* ============ FILTERS ============ */
 let showEats=12, showPand=12;
 function moreEats(){showEats+=24;applyFilters();}
 function morePand(){showPand+=24;applyDir();}
+/* P21 · stable-reflow: when a search/filter re-render shrinks or grows the
+   results, keep the controls (or, failing that, the result card the user is
+   looking at) at the same on-screen position instead of letting the page
+   clamp-jump or yank to the grid. */
+function stableUpdate(ctrl,updateFn){
+  const vis=el=>{if(!el)return false;const r=el.getBoundingClientRect();
+    if(!r.width&&!r.height)return false;
+    const cs=getComputedStyle(el);
+    return cs.visibility!=='hidden'&&cs.display!=='none'&&r.bottom>0&&r.top<window.innerHeight};
+  const cRect=vis(ctrl)?ctrl.getBoundingClientRect().top:null;
+  let aid=null,aTop=0;
+  for(const el of document.querySelectorAll('#grid .card,#dlist .drow')){
+    if(el.classList.contains('hide'))continue;
+    const r=el.getBoundingClientRect();
+    if(r.bottom>0&&r.top<window.innerHeight){aid=el.id;aTop=r.top;break}
+  }
+  updateFn();
+  let fixed=false;
+  if(cRect!==null&&vis(ctrl)){
+    const d=ctrl.getBoundingClientRect().top-cRect;
+    if(Math.abs(d)>1){
+      const max=document.documentElement.scrollHeight-window.innerHeight;
+      window.scrollTo({top:Math.max(0,Math.min(window.scrollY+d,max)),behavior:'instant'});fixed=true;
+    }else fixed=true;
+  }
+  if(!fixed){
+    /* try the result card the user was on, then any nearby landmark section */
+    let ne=aid?document.getElementById(aid):null;
+    let base=aTop;
+    if(!ne){
+      for(const lm of document.querySelectorAll('#pairs,#days,#mpfeat,#eat,#pandals,#grid,#dlist,footer')){
+        const r=lm.getBoundingClientRect();
+        if(r.bottom>0&&r.top<window.innerHeight){ne=lm;base=r.top;break}
+      }
+    }
+    if(ne){
+      const d=ne.getBoundingClientRect().top-base;
+      if(Math.abs(d)>1){
+        const max=document.documentElement.scrollHeight-window.innerHeight;
+        window.scrollTo({top:Math.max(0,Math.min(window.scrollY+d,max)),behavior:'instant'});
+      }
+    }
+  }
+}
 function applyFilters(){
   let shown=0, total=0, limited=!q;
   SPOTS.forEach(s=>{
@@ -1715,31 +2004,45 @@ function applyFilters(){
 $('#tabs').addEventListener('click',e=>{
   const b=e.target.closest('.tab'); if(!b)return;
   $$('.tab').forEach(x=>x.classList.remove('on')); b.classList.add('on');
-  cat=b.dataset.cat; showEats=12; applyFilters(); scrollGrid();
+  cat=b.dataset.cat; showEats=12;
+  stableUpdate(document.getElementById('tabs'),()=>applyFilters());
 });
 $('#chips').addEventListener('click',e=>{
   const b=e.target.closest('.chip'); if(!b)return;
   b.classList.toggle('on');
   tags.has(b.dataset.tag)?tags.delete(b.dataset.tag):tags.add(b.dataset.tag);
-  showEats=12; applyFilters(); scrollGrid();
+  showEats=12;
+  stableUpdate(document.getElementById('chips'),()=>applyFilters());
 });
+/* P21 · search/filter updates keep the controls anchored — no page yank */
+function filterEats(){stableUpdate(document.getElementById('q'),applyFilters)}
+$('#q').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();showEats=12;filterEats()});
+$('#q').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();e.target.blur()}});
+function searchEatsGo(){document.getElementById('q').blur();filterEats()}
 /* ============ FILTER BAR SHOW/HIDE + SCROLL-TO-RESULTS ============ */
 function toggleFilters(){
   const fb=document.getElementById('filterbar');
+  fb.classList.remove('search-open');
   const c=fb.classList.toggle('collapsed');
   try{localStorage.setItem('pujoFilters',c?'0':'1')}catch(e){}
   const ar=document.getElementById('fArrow'); if(ar)ar.textContent=c?'▸':'▾';
   fb.setAttribute('aria-expanded',c?'false':'true');
 }
-function scrollGrid(){
-  const g=document.getElementById('grid'); if(!g)return;
-  const r=g.getBoundingClientRect();
+/* P22 · collapsed-state Search button: expand the filter bar, then focus the field */
+function openFoodSearch(){
+  /* P23 · open ONLY the search input — filter options stay hidden */
   const fb=document.getElementById('filterbar');
-  const fbH=fb?fb.offsetHeight:60;
-  if(r.top<fbH+4||r.top>window.innerHeight*.7){
-    window.scrollTo({top:window.scrollY+r.top-fbH-14,behavior:'smooth'});
-  }
+  fb.classList.add('search-open');
+  setTimeout(()=>{const q=document.getElementById('q');if(q){try{q.focus({preventScroll:true})}catch(e){q.focus()}}},80);
 }
+function closeFoodSearch(){
+  const fb=document.getElementById('filterbar');
+  fb.classList.remove('search-open');
+  const q=document.getElementById('q');if(q)q.blur();
+}
+/* P21 · the old scrollGrid() yank was removed — filter/search updates now
+   keep the controls/results anchored via stableUpdate() instead of
+   force-scrolling the page to the grid. */
 (function(){
   let st=null; try{st=localStorage.getItem('pujoFilters')}catch(e){}
   const c = st===null ? window.innerWidth<900 : st==='0';
@@ -1810,16 +2113,19 @@ function psClose(){
   if(inp)inp.value=''; if(dq)dq.value=''; dq2=''; showPand=12; applyDir();
 }
 (function(){
-  const sec=document.getElementById('pandals'), fab=document.getElementById('psFab'),
+  /* P23 · watch the pandal CARDS (#dlist), not the section — the corner
+     search button appears only when the cards start */
+  const sec=document.getElementById('dlist'), fab=document.getElementById('psFab'),
         bar=document.getElementById('psBar'), inp=document.getElementById('psInp'),
         dq=document.getElementById('dq');
   if(!sec||!fab||!bar||!inp||!('IntersectionObserver' in window))return;
   const io=new IntersectionObserver(es=>{
     es.forEach(en=>{
-      if(en.isIntersecting&&window.innerWidth<=840)fab.classList.add('on');
-      else{fab.classList.remove('on');psClose();}
+      if(en.isIntersecting)fab.classList.add('on');
+      /* hide the FAB when the cards leave view, but never kill an open search */
+      else{fab.classList.remove('on');if(!bar.classList.contains('open')&&window.innerWidth<=840)psClose();}
     });
-  },{rootMargin:'0px 0px -8% 0px'});
+  },{rootMargin:'0px 0px -2% 0px'});
   io.observe(sec);
   fab.addEventListener('click',()=>{
     const open=bar.classList.toggle('open');
@@ -1830,14 +2136,14 @@ function psClose(){
   inp.addEventListener('input',()=>{
     dq2=inp.value.trim().toLowerCase();showPand=12;
     if(dq)dq.value=inp.value;
-    applyDir();
+    stableUpdate(null,applyDir); /* fixed panel: preserve the visible result card */
   });
   window.addEventListener('resize',()=>{if(window.innerWidth>840)psClose();});
 })();
 $('#q').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();showEats=12;applyFilters()});
 /* ============ PANDAL ATLAS UI ============ */
 const TYLBL={mega:'t_mega',theme:'t_theme',heritage:'t_heritage',trad:'t_trad',artisan:'t_artisan'};
-const TYCLS={mega:'t-m',theme:'t-r',heritage:'t-h',trad:'t-t',artisan:'t-a'};
+const TYCLS={mega:'t-m',theme:'t-r',heritage:'tchip-h',trad:'t-t',artisan:'t-a'};
 const BTLBL={morn:'b_morn',night:'b_night',night8:'b_night8',aft:'b_aft',eve:'b_eve',peak:'b_peak'};
 const ZCLS={north:'z-north',central:'z-central',south:'z-south',east:'z-east',sw:'z-sw',ho:'z-ho',n24:'z-n24',hg:'z-hg'};
 const ZLBL={north:'z_n',central:'z_c',south:'z_s',east:'z_e',sw:'z_sw',ho:'z_ho',n24:'z_n24',hg:'z_hg'};
@@ -1852,18 +2158,21 @@ function renderDir(){
     const q=p.lat?(p.lat+','+p.lng):encodeURIComponent(p.g);
     const pair=p.pair?`<div class="d-pair">🍽 ${LANG==='bn'?'পাশে খাওয়ার ঠিকানা':'Fuel pairing'} → <b>${LANG==='bn'?p.pair.ebn:p.pair.e}</b> — ${LANG==='bn'?p.pair.wb:p.pair.w}</div>`:'';
     return `<div class="drow ${ZCLS[p.z]}" id="d-${p.id}" data-z="${p.z}">
-     <div class="d-main">
-      <div class="d-name">${p.star?'<span class="d-star">⭐</span>':''}${(LANG==='bn'&&p.nb)?p.nb:p.n}<span class="tchip ${TYCLS[p.ty]}">${t(TYLBL[p.ty])}</span>${p.ee?`<span class="d-est">⏳ ${LANG==='bn'?p.eb:p.ee}</span>`:''}<span class="zchip ${ZCLS[p.z]}">${t(ZLBL[p.z])}</span></div>
-      <div class="d-note">${note}</div>
-      <div class="d-best">⏰ ${t(BTLBL[p.bt])}</div>
-      <div class="d-addr">📍 ${p.a} · ${p.lm}</div>
+     <div class="d-head">
+      <div class="d-name">${p.star?'<span class="d-star">⭐</span>':''}${(LANG==='bn'&&p.nb)?p.nb:p.n}</div>
      </div>
-     <div class="d-side"><div class="d-eats">${nb?`<b>${t('dir_nearby')}</b>`:''}${nb}</div>
+     <div class="d-toprow">
       <div class="d-acts">
-       <button type="button" class="mini2 act-heart${savedP.has(p.id)?' on':''}" onclick="toggleSaveP('${p.id}')" title="${t('btn_save')}">${savedP.has(p.id)?'♥':'♡'}</button>
+       <button type="button" class="sv-btn act-heart${savedP.has(p.id)?' on':''}" onclick="toggleSaveP('${p.id}')" title="${t('btn_save')}" aria-pressed="${savedP.has(p.id)?'true':'false'}">${savedP.has(p.id)?t('btn_saved'):t('btn_save')}</button>
        <button type="button" class="mini2 act-vis${VISITED.has('pandal:'+p.id)?' on':''}" onclick="toggleVisited('pandal','${p.id}')" title="${t('mark_visited')}">✓</button>
       </div>
-      <button type="button" class="mini2" data-maps="${escA(p.lat?(p.lat+','+p.lng):p.g)}">🧭 ${t('pair_dir')}</button></div>
+      <div class="d-chips"><span class="tchip ${TYCLS[p.ty]}">${t(TYLBL[p.ty])}</span>${p.ee?`<span class="d-est">⏳ ${LANG==='bn'?p.eb:p.ee}</span>`:''}<span class="zchip ${ZCLS[p.z]}">${t(ZLBL[p.z])}</span></div>
+     </div>
+     <div class="d-note">${note}</div>
+     <div class="d-best">⏰ ${t(BTLBL[p.bt])}</div>
+     <div class="d-addr">📍 ${p.a} · ${p.lm}</div>
+     <div class="d-eats">${nb?`<b>${t('dir_nearby')}</b>`:''}${nb}</div>
+     <button type="button" class="dir-btn" data-maps="${escA(p.lat?(p.lat+','+p.lng):p.g)}">🧭 ${t('pair_dir')}</button>
      ${pair}
     </div>`;
   }).join('');
@@ -1901,13 +2210,22 @@ function applyDir(){
 $('#dtabs').addEventListener('click',e=>{
   const b=e.target.closest('.tab'); if(!b)return;
   $$('#dtabs .tab').forEach(x=>x.classList.remove('on')); b.classList.add('on');
-  dz=b.dataset.zone; showPand=12; applyDir();
+  dz=b.dataset.zone; showPand=12;
+  stableUpdate(document.getElementById('dtabs'),applyDir);
 });
-$('#dq').addEventListener('input',e=>{dq2=e.target.value.trim().toLowerCase();showPand=12;applyDir()});
+/* P23 · pandal search: the dir-bar button opens the fixed search bar (input
+   only — no filter options). Typing filters via the existing anchored update. */
+function openPandalSearch(){
+  const bar=document.getElementById('psBar'),fab=document.getElementById('psFab'),inp=document.getElementById('psInp');
+  if(!bar||!inp)return;
+  bar.classList.add('open');if(fab)fab.classList.add('off');
+  setTimeout(()=>{try{inp.focus({preventScroll:true})}catch(e){inp.focus()}},80);
+}
 $('#dcats').addEventListener('click',e=>{
   const b=e.target.closest('.tab'); if(!b)return;
   $$('#dcats .tab').forEach(x=>x.classList.remove('on')); b.classList.add('on');
-  dpc=b.dataset.pc; showPand=12; applyDir();
+  dpc=b.dataset.pc; showPand=12;
+  stableUpdate(document.getElementById('dcats'),applyDir);
 });
 
 /* ============ SHORTLIST ============ */
@@ -1915,7 +2233,7 @@ let saved=new Set();
 const store={get(){try{return JSON.parse(localStorage.getItem('pujoSaved')||'[]')}catch(e){return[]}},
              set(v){try{localStorage.setItem('pujoSaved',JSON.stringify(v))}catch(e){}}};
 function toggleSave(id){
-  if(!saved.has(id)&&session.mode!=='user'&&SAVED2.filter(x=>x.t==='food').length>=GLIM.food){pendingAction={kind:'save',t:'food',id:id};guestLimit();return}
+  if(!saved.has(id)&&session.mode!=='user'&&SAVED2.filter(x=>x.t==='food').length>=GLIM.food){setPending({kind:'save',t:'food',id:id});guestLimit();return}
   saved.has(id)?saved.delete(id):saved.add(id);
   SAVED2=SAVED2.filter(x=>!(x.t==='food'&&x.id===id));
   if(saved.has(id))SAVED2.push({t:'food',id,at:Date.now()});
@@ -1924,7 +2242,8 @@ function toggleSave(id){
   toast(saved.has(id)?t('toast_saved').replace('{n}',(s||{}).n||''):t('toast_rm'));
 }
 function syncHearts(){
-  $('#savedCount').textContent=dg(saved.size);
+  /* P25 · header count = saved FOOD + saved PANDALS (SAVED2 is the single source, deduped) */
+  $('#savedCount').textContent=dg(new Set(SAVED2.map(x=>x.t+':'+x.id)).size);
   $$('.mini.heart').forEach(b=>{
     const id=b.parentElement.parentElement.id.slice(2);
     const on=saved.has(id);
@@ -1943,7 +2262,7 @@ function showShortlist(){
    <div class="modal-body">${items}
    <div class="mrow"><button type="button" class="mini gold" onclick="doPrint()">${t('short_print')}</button>
    <button type="button" class="mini" data-maps="${escA('https://www.google.com/maps/dir/?api=1&waypoints='+encodeURIComponent([...saved].map(id=>SPOTS.find(s=>s.id===id).maps).join('|')))}">${t('short_route')}</button></div>
-   <p style="font-size:11.5px;color:#8a6d4a;margin-top:10px">${LANG==='bn'?'টিপ: অ্যাপ-প্রিভিউয়ের ভিতরে নতুন ট্যাব/প্রিন্ট ব্লক হতে পারে — ফাইলটা ডাউনলোড করে ব্রাউজারে খুললে সব বাটন কাজ করবে।':'Tip: new tabs & print can be blocked inside app previews — download the file and open in your browser and every button works.'}</p></div>`;
+   <p style="font-size:11.5px;color:#6f5535;margin-top:10px">${LANG==='bn'?'টিপ: অ্যাপ-প্রিভিউয়ের ভিতরে নতুন ট্যাব/প্রিন্ট ব্লক হতে পারে — ফাইলটা ডাউনলোড করে ব্রাউজারে খুললে সব বাটন কাজ করবে।':'Tip: new tabs & print can be blocked inside app previews — download the file and open in your browser and every button works.'}</p></div>`;
   $('#mOverlay').classList.add('open');
 }
 
@@ -2018,10 +2337,16 @@ function doPrint(){
   toast(ok ? (LANG==='bn'?'প্রিন্ট উইন্ডো খুলছে…':'Opening print…')
            : (LANG==='bn'?'প্রিভিউতে প্রিন্ট ব্লকড — ফাইল ডাউনলোড করে ব্রাউজারে খুলুন':'Print blocked in preview — download the file & open in your browser'));
 }
-function waInfo(){
-  $('#mContent').innerHTML=`<div class="modal-head"><h3>💬 WhatsApp</h3><div class="meta">${LANG==='bn'?'মালিকের জন্য নোট':'Owner setup note'}</div></div>
-  <div class="modal-body"><p>${LANG==='bn'?'লঞ্চের আগে এই প্লেসহোল্ডারের জায়গায় নিজের হোয়াটসঅ্যাপ লিংক বসান (https://wa.me/91XXXXXXXXXX) — ফুটারের লিংকটা বদলাতে হবে।':'Before launch, replace this placeholder in the footer with your real WhatsApp link (https://wa.me/91XXXXXXXXXX).'}</p>
-  <div class="mrow"><button type="button" class="mini" onclick="closeModals()">${t('spot_close')}</button></div></div>`;
+/* P24 · lightweight Help/Legal info modals — every string via the language system */
+const INFO_MODAL={
+  hiw:{h:'ih_hiw_h',p:'ih_hiw_p'},savemp:{h:'ih_savemp_h',p:'ih_savemp_p'},
+  guest:{h:'ih_guest_h',p:'ih_guest_p'},privacy:{h:'ih_priv_h',p:'ih_priv_p'},
+  terms:{h:'ih_terms_h',p:'ih_terms_p'},disc:{h:'ih_disc_h',p:'ih_disc_p'}
+};
+function infoModal(k){
+  const m=INFO_MODAL[k];if(!m)return;
+  $('#mContent').innerHTML=`<div class="modal-head"><h3>${t(m.h)}</h3></div>
+   <div class="modal-body"><p style="margin:0;color:#6b4a26;font-size:14px;line-height:1.75">${t(m.p)}</p></div>`;
   $('#mOverlay').classList.add('open');
 }
 document.addEventListener('click',e=>{
@@ -2037,7 +2362,13 @@ function toast(msg){
 }
 
 /* ============ ACCOUNT & PERSONALIZATION ============ */
-const PUJO_CONFIG={googleClientId:'',facebookAppId:'',authApiBase:'/api'};
+const PUJO_CONFIG={authApiBase:'/api',
+  /* Supabase PUBLIC values only (URL + anon key are client-safe by design; no service-role
+     key, app secret or any OAuth client secret ever goes in frontend code). Used for the
+     Google + Facebook OAuth handshake via Supabase Auth; email auth runs through authApiBase.
+     supabaseAnonKey may stay empty: the backend serves the public pair from its environment
+     via GET /auth/config. Only paste the anon key here for fully static deployments. */
+  supabaseUrl:'https://jzirrcllqowxhbjtieoo.supabase.co',supabaseAnonKey:''};
 let apiUp=null,pushT=null,syncPause=false;
 async function api(path,opt){
   opt=opt||{};
@@ -2045,7 +2376,7 @@ async function api(path,opt){
   if(session.token)hdrs['X-Auth']=session.token;
   const call=fetch(PUJO_CONFIG.authApiBase+path,{method:opt.method||(opt.body?'POST':'GET'),headers:hdrs,body:opt.body?JSON.stringify(opt.body):undefined});
   const res=await Promise.race([call,new Promise((_,rj)=>setTimeout(()=>rj(new Error('timeout')),7000))]);
-  if(!res.ok){const e=new Error('http '+res.status);e.http=res.status;throw e}
+  if(!res.ok){let bd=null;try{bd=await res.json()}catch(_){}const e=new Error('http '+res.status);e.http=res.status;if(bd&&bd.code)e.code=bd.code;throw e}
   apiUp=true;return res.json();
 }
 function clearUserNs(uid){
@@ -2095,6 +2426,19 @@ function getUsers(){return $st('pujoUsers')||{}}
 function saveUsers(u){try{localStorage.setItem('pujoUsers',JSON.stringify(u||getUsers()))}catch(e){}}
 function getUser(uid){return getUsers()[uid]||null}
 function updUser(uid,fn){const U=getUsers();if(U[uid]){fn(U[uid]);saveUsers(U)}}
+/* P19 · single source of truth for the signed-in user's display data.
+   Merges the local profile record with the live session so the header,
+   profile page and settings always agree (falls back gracefully). */
+function curUser(){
+  const u=(session.mode==='user'?getUser(session.uid):null)||{};
+  return {name:u.name||session.name||'Pujo Friend',
+          photo:u.photo||session.photo||'',
+          email:u.email||session.email||'',
+          phone:u.phone||'',
+          provider:u.provider||session.provider||'email'};
+}
+/* P19 · graceful avatar fallback: swap a broken/missing image for the initial */
+function avErr(img){const p=img.parentNode;if(!p)return;const s=document.createElement('span');s.textContent=p.getAttribute('data-init')||'P';p.textContent='';p.appendChild(s)}
 async function hashPass(pass,salt){
   try{const d=new TextEncoder().encode(salt+':'+pass);const buf=await crypto.subtle.digest('SHA-256',d);
     let h='';new Uint8Array(buf).forEach(b=>h+=b.toString(16).padStart(2,'0'));return h;}
@@ -2107,9 +2451,10 @@ function renderAuthUI(){
   const aw=document.getElementById('acctWrap'); if(aw)aw.style.display=session.mode==='user'?'':'none';
   const av=document.getElementById('avatarBtn');
   if(av){
-    const u=session.mode==='user'?getUser(session.uid):null;
+    const u=session.mode==='user'?curUser():null;
     const initial=(u&&u.name?u.name.trim()[0]:(LANG==='bn'?'অ':'P')).toUpperCase();
-    av.innerHTML=u&&u.photo?`<img src="${escA(u.photo)}" alt="">`:initial;
+    av.setAttribute('data-init',initial);
+    av.innerHTML=u&&u.photo?`<img src="${escA(u.photo)}" alt="" onerror="avErr(this)">`:initial;
   }
   syncHearts();
 }
@@ -2143,8 +2488,19 @@ function doMigrate(){
   toast(LANG==='bn'?'✓ সব সেভ করা ঠিকানা আপনার অ্যাকাউন্টে নেওয়া হলো':'✓ Your saved places moved into your account');
 }
 function signInAs(u,provider,token,data){
-  session={mode:'user',uid:u.id,name:u.name,email:u.email||'',provider};
+  session={mode:'user',uid:u.id,name:u.name,email:u.email||'',photo:u.photo||'',provider};
   if(token)session.token=token;
+  /* P19 · make sure a local profile record exists (server logins previously had
+     none → "Guest" label, blank Settings field, avatar lost). Keep any existing
+     local photo/name if the server record carries none. */
+  try{const U=getUsers();const prev=U[u.id]||{};
+    U[u.id]=Object.assign({},prev,{id:u.id,
+      name:u.name||prev.name||'',email:u.email||prev.email||'',
+      phone:u.phone||prev.phone||'',photo:u.photo||prev.photo||'',
+      provider:provider||prev.provider||'email'});
+    saveUsers(U);
+    session.photo=U[u.id].photo||''; /* keep the session copy in sync with the merged record */
+  }catch(e){}
   try{localStorage.setItem('pujoSession',JSON.stringify(session))}catch(e){}
   if(token){clearUserNs(u.id);applyServerData(data)}
   else{loadSets();persistUser()}
@@ -2173,7 +2529,7 @@ function deleteAccount(){
   } else fin();
 }
 /* ---------- auth modal ---------- */
-function closeAuth(){$('#authOverlay').classList.remove('open');document.body.classList.remove('authlock')}
+function closeAuth(){clearAuthCool();$('#authOverlay').classList.remove('open');document.body.classList.remove('authlock')}
 let authTab='login';
 function authHomeHTML(){
   const L=authTab!=='signup';
@@ -2186,137 +2542,372 @@ function authHomeHTML(){
    <button type="button" class="prov-btn g" onclick="provGoogle()"><span class="ic">G</span> ${t('auth_google')}</button>
    <button type="button" class="prov-btn f" onclick="provFacebook()"><span class="ic">f</span> ${t('auth_fb')}</button>
    <div class="auth-or"><span>${t('or_div')}</span></div>
-   <div class="prov2">
-    <button type="button" class="prov-btn e" onclick="openAuth('email')"><span class="ic">✉</span> ${t('auth_email')}</button>
-    <button type="button" class="prov-btn p" onclick="openAuth('phone')"><span class="ic">📞</span> ${t('auth_phone')}</button>
-   </div>
+   <button type="button" class="prov-btn e" onclick="openAuth('email')"><span class="ic">✉</span> ${t('auth_email')}</button>
    <button type="button" class="swaplink" onclick="authTabSet('${L?'signup':'login'}')">${L?t('swap_cu'):t('swap_li')}</button>
    <div class="gstrip">
     <div class="gs-l"><b>${t('ge_q')}</b><span>${t('ge_n')}</span></div>
     <button type="button" class="gs-b" onclick="guestContinue()">${t('auth_guest')}</button>
    </div>`;
 }
-function authTabSet(x){if(x!=='login'&&x!=='signup')return;authTab=x;const b=document.getElementById('authBox');if(b)b.innerHTML=authHomeHTML()}
+function authTabSet(x){if(x!=='login'&&x!=='signup')return;clearAuthCool();emErr();authTab=x;const b=document.getElementById('authBox');if(b)b.innerHTML=authHomeHTML()}
 function openAuth(view){
-  closeModals();closePanel();document.body.classList.add('authlock');
+  closeModals();closePanel();clearAuthCool();emErr();document.body.classList.add('authlock');
   const box=$('#authBox');
   if(view==='email'){box.innerHTML=authEmailHTML(authTab);return $('#authOverlay').classList.add('open')}
-  if(view==='phone'){box.innerHTML=authPhoneHTML();return $('#authOverlay').classList.add('open')}
   if(view==='setup-g'){box.innerHTML=setupHTML('Google');return $('#authOverlay').classList.add('open')}
   if(view==='setup-f'){box.innerHTML=setupHTML('Facebook');return $('#authOverlay').classList.add('open')}
   box.innerHTML=authHomeHTML();
   $('#authOverlay').classList.add('open');
 }
 function setupHTML(p){
+  const msg=LANG==='bn'
+    ?p+' লগইন Supabase Auth-এর মাধ্যমে চলে। চালু করতে: ① Supabase Dashboard → Authentication → Providers → '+p+' চালু করে দরকারি App ID / Client ID আর Secret বসান ② Site URL-এ আপনার সাইটের ঠিকানা আর Redirect URLs-এ সাইটের ডোমেইন যোগ করুন ③ ব্যাকএন্ড এনভায়রনমেন্টে Supabase-এর পাবলিক URL আর anon key থাকলেই বাটন নিজে থেকে চালু হয়ে যাবে। কনফিগ ছাড়া আমরা ভুয়া লগইন দেখাব না।'
+    :p+' sign-in runs through Supabase Auth. To enable it: ① Supabase Dashboard → Authentication → Providers → '+p+' — add the required App ID / Client ID and Secret ② set your site as Site URL and add its domain under Redirect URLs ③ once the backend environment holds the Supabase public URL and anon key, the button turns itself on. We won\u2019t fake a login without it.';
   return `<button type="button" class="back-link" onclick="openAuth()">← ${LANG==='bn'?'ফিরে যান':'Back'}</button>
    <div class="emptybox"><div class="big">🔧</div>
-   <b>${p} login</b><p style="font-size:12.5px;line-height:1.6;margin-top:8px">${
-    LANG==='bn'?p+' লগইন লাইভ করতে একটা '+p+' developer অ্যাপ দরকার — OAuth Client ID নিয়ে PUJO_CONFIG-এ বসান। ধাপগুলো SETUP-AUTH.md ফাইলে আছে। কনফিগ ছাড়া আমরা ভুয়া লগইন দেখাব না।'
-    :'To go live, '+p+' sign-in needs an OAuth client ID from the '+p+' developer console, placed in PUJO_CONFIG. Exact steps are in SETUP-AUTH.md. We won\u2019t fake a login without it.'}</p></div>
+   <b>${p} login</b><p style="font-size:12.5px;line-height:1.6;margin-top:8px">${msg}</p></div>
    <button type="button" class="guest-link" onclick="guestContinue()">${t('auth_guest')}</button>`;
+}
+let authCfg={mode:null,autoconfirm:true,minLen:4},authCoolT=null,confEmail='',authCoolSecs=60;
+function authCfgLoad(){
+  if(authCfg.mode)return;
+  authCfg.mode='pending';
+  api('/auth/config').then(c=>{authCfg={mode:c.mode,autoconfirm:c.autoconfirm,minLen:c.minPasswordLength||6,otpEmail:c.otpEmail};const h=document.getElementById('emHint');if(h&&authCfg.minLen)h.textContent=t('em_hint').replace('{n}',dg(authCfg.minLen))}).catch(()=>{authCfg={mode:'local',autoconfirm:true,minLen:4,otpEmail:false}});
+}
+function clearAuthCool(){if(authCoolT){clearInterval(authCoolT);authCoolT=null}}
+function emErr(id,msg){const e=document.getElementById(id||'emErr');if(!e)return;if(!msg){e.style.display='none';e.textContent='';return}e.textContent=msg;e.style.display='block'}
+function pwToggle(btn){const i=btn.parentElement.querySelector('input');const show=i.type==='password';i.type=show?'text':'password';btn.textContent=t(show?'pw_hide':'pw_show');btn.setAttribute('aria-label',btn.textContent);i.focus()}
+function startCool(btn,secs){
+  clearAuthCool();
+  btn.disabled=true;
+  const cool=document.getElementById('confCool')||document.getElementById('otpCool');
+  const end=Date.now()+secs*1000;
+  const tick=()=>{
+    const left=Math.max(0,Math.ceil((end-Date.now())/1000));
+    if(cool)cool.textContent=left>0?t('cool_in').replace('{s}',dg(left)):'';
+    if(left<=0){clearAuthCool();btn.disabled=false}
+  };
+  tick();authCoolT=setInterval(tick,1000);
 }
 function authEmailHTML(mode){
   mode=mode||authTab||'login';
+  authCfgLoad();
+  const S=mode==='signup';
   return `<button type="button" class="back-link" onclick="openAuth()">← ${LANG==='bn'?'ফিরে যান':'Back'}</button>
+   <div class="tabhead" style="margin:0 0 10px"><h4 class="t-h">${t(S?'ef_sh':'ef_lh')}</h4></div>
    <div class="auth-form">
-   ${mode==='signup'?`<label>${t('em_name')}</label><input id="auName" autocomplete="name">`:''}
-   <label>Email</label><input id="auEmail" type="email" autocomplete="email" placeholder="you@example.com">
-   <label>${t('em_pass')}</label><input id="auPass" type="password" autocomplete="${mode==='signup'?'new-password':'current-password'}">
-   <div class="mrow" style="margin-top:6px"><button type="button" class="mini gold" style="padding:12px" onclick="emailSubmit('${mode}')">${mode==='signup'?t('em_signup'):t('em_login')}</button>
-   <button type="button" class="mini" onclick="authEmailSwap('${mode==='signup'?'login':'signup'}')">${mode==='signup'?t('em_login'):t('em_signup')}</button></div>
+   ${S?`<label>${t('em_name')}</label><input id="auName" autocomplete="name" maxlength="40">`:''}
+   <label>${LANG==='bn'?'ইমেল':'Email'}</label><input id="auEmail" type="email" inputmode="email" autocomplete="email" placeholder="${t('em_ph')}">
+   <label>${t('em_pass')}</label>
+   <div class="pw-wrap"><input id="auPass" type="password" autocomplete="${S?'new-password':'current-password'}" placeholder="${t(S?'pw_ph_s':'pw_ph_l')}"><button type="button" class="pw-toggle" onclick="pwToggle(this)" aria-label="${t('pw_show')}">${t('pw_show')}</button></div>
+   ${S?`<div class="ehint" id="emHint">${authCfg.minLen?t('em_hint').replace('{n}',dg(authCfg.minLen)):''}</div>`:''}
+   <div class="em-err" id="emErr"></div>
+   <div class="mrow" style="margin-top:6px"><button type="button" class="mini gold" style="padding:12px;min-height:44px" onclick="emailSubmit('${mode}')">${S?t('em_signup'):t('em_login')}</button></div>
+   ${S?'':`<button type="button" class="swaplink" style="min-height:36px" onclick="openReset()">${t('em_forgot')}</button>`}
+   <button type="button" class="swaplink" onclick="authEmailSwap('${S?'login':'signup'}')">${S?t('swap_li'):t('swap_cu')}</button>
    </div>`;
 }
-function authEmailSwap(m){authTab=m;document.getElementById('authBox').innerHTML=authEmailHTML(m)}
-function authPhoneHTML(){
+function authEmailSwap(m){clearAuthCool();emErr();authTab=m;document.getElementById('authBox').innerHTML=authEmailHTML(m)}
+async function provGoogle(){
+  if(window.__gBusy)return; /* block double clicks while redirecting */
+  gBtnState(true);
+  const cfgOk=!!((PUJO_CONFIG.supabaseUrl&&PUJO_CONFIG.supabaseAnonKey)||await oauthCfg());
+  const sb=await sbLoad();
+  if(!sb){gBtnState(false);cfgOk?toast(t('fb_err_net')):openAuth('setup-g');return}
+  try{
+    const res=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname,skipBrowserNavigation:true}});
+    if(res&&res.error)throw res.error;
+    const url=res&&res.data&&res.data.url;
+    if(!url)throw new Error('no oauth url');
+    saveAppHash(); /* the provider overwrites the hash with tokens — restore it on return */
+    oauthNav(url); /* full-page redirect — pendingAction rides in localStorage */
+  }catch(e){
+    toast(t('fb_err_net'));
+    gBtnState(false);
+  }
+}
+/* ---- Facebook OAuth via Supabase Auth (public config only; tokens validated server-side) ---- */
+let _sbP=null,_sbCfgP=null;
+function oauthCfg(){
+  /* hard-coded public pair wins; otherwise ask our backend for the pair it holds in its env */
+  if(PUJO_CONFIG.supabaseUrl&&PUJO_CONFIG.supabaseAnonKey)return Promise.resolve({url:PUJO_CONFIG.supabaseUrl,key:PUJO_CONFIG.supabaseAnonKey});
+  if(_sbCfgP)return _sbCfgP;
+  _sbCfgP=api('/auth/config').then(c=>((c.supabaseUrl&&c.supabaseAnonKey)?{url:c.supabaseUrl,key:c.supabaseAnonKey}:null)).catch(()=>null);
+  return _sbCfgP;
+}
+async function sbLoad(){
+  const cfg=await oauthCfg();
+  if(!cfg)return null;
+  if(window.supabase&&window.supabase.createClient)return _sbClient(cfg);
+  if(_sbP)return _sbP.then(loaded=>loaded&&window.supabase?_sbClient(cfg):null);
+  _sbP=new Promise(res=>{
+    const sc=document.createElement('script');
+    sc.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+    const to=setTimeout(()=>res(null),10000);
+    sc.onload=()=>{clearTimeout(to);res(window.supabase&&window.supabase.createClient?true:null)};
+    sc.onerror=()=>{clearTimeout(to);res(null)};
+    document.head.appendChild(sc);
+  });
+  const ok=await _sbP;
+  return ok?_sbClient(cfg):null;
+}
+function _sbClient(cfg){
+  /* implicit flow → tokens come back in the URL hash; we parse them ourselves and hand
+     them to our backend, which validates with Supabase before creating the session */
+  return window.supabase.createClient(cfg.url,cfg.key,
+    {auth:{flowType:'implicit',detectSessionInUrl:false,persistSession:true,storageKey:'pujo-sb-auth'}});
+}
+function oauthNav(url){location.href=url}
+function appHash(){
+  /* the current hash if it is an app hash (#pandals / #eat / #days / #plan=…) —
+     not the OAuth return payload the provider will overwrite it with */
+  const h=location.hash||'';
+  if(!h||h==='#')return '';
+  const raw=h.replace(/^#/,'');
+  if(!raw.includes('='))return h; /* plain section anchor */
+  const keys=raw.split('&').map(kv=>kv.split('=')[0]);
+  return keys.some(k=>['access_token','refresh_token','token_type','expires_in','error','error_description','code','state'].includes(k))?'':h;
+}
+function saveAppHash(){try{const h=appHash();if(h)localStorage.setItem('pujoOAuthHash',h)}catch(e){}}
+function restoreAppHash(){
+  try{
+    const saved=localStorage.getItem('pujoOAuthHash');
+    if(!saved)return;
+    localStorage.removeItem('pujoOAuthHash');
+    if(location.hash&&location.hash!=='#')return; /* something meaningful is already there */
+    history.replaceState(null,'',location.origin+location.pathname+location.search+saved);
+    const el=document.getElementById(saved.replace(/^#/,''));
+    if(el){try{el.scrollIntoView()}catch(e){}}
+    else handlePlanHash();
+  }catch(e){}
+}
+function fbBtnState(busy){
+  const b=document.querySelector('#authBox .prov-btn.f');
+  if(!b)return;
+  if(busy){b.dataset.lbl=b.innerHTML;b.classList.add('loading');b.innerHTML='<span class="ic">f</span> '+t('fb_connecting')}
+  else{b.classList.remove('loading');if(b.dataset.lbl)b.innerHTML=b.dataset.lbl}
+  window.__fbBusy=busy;
+}
+function gBtnState(busy){
+  const b=document.querySelector('#authBox .prov-btn.g');
+  if(!b)return;
+  if(busy){b.dataset.lbl=b.innerHTML;b.classList.add('loading');b.innerHTML='<span class="ic">G</span> '+t('fb_connecting')}
+  else{b.classList.remove('loading');if(b.dataset.lbl)b.innerHTML=b.dataset.lbl}
+  window.__gBusy=busy;
+}
+async function provFacebook(){
+  if(window.__fbBusy)return; /* block double clicks while redirecting */
+  fbBtnState(true);
+  const cfgOk=!!(PUJO_CONFIG.supabaseUrl&&PUJO_CONFIG.supabaseAnonKey);
+  const sb=await sbLoad();
+  if(!sb){fbBtnState(false);cfgOk?toast(t('fb_err_net')):openAuth('setup-f');return} /* offline → friendly error; unconfigured → honest setup notice */
+  try{
+    const res=await sb.auth.signInWithOAuth({provider:'facebook',options:{redirectTo:location.origin+location.pathname,skipBrowserNavigation:true}});
+    if(res&&res.error)throw res.error;
+    const url=res&&res.data&&res.data.url;
+    if(!url)throw new Error('no oauth url');
+    saveAppHash(); /* the provider overwrites the hash with tokens — restore it on return */
+    oauthNav(url); /* full-page redirect — pendingAction rides in localStorage */
+  }catch(e){
+    toast(t('fb_err_net'));
+    fbBtnState(false);
+  }
+}
+/* ---- OAuth return handling: parse the callback params, exchange server-side, clean the URL ---- */
+function oauthParams(){
+  const out={};const h=(location.hash||'').replace(/^#\??/,'');
+  if(h&&h.includes('='))h.split('&').forEach(kv=>{const i=kv.indexOf('=');if(i>0)out[kv.slice(0,i)]=decodeURIComponent(kv.slice(i+1).replace(/\+/g,' '))});
+  const q=new URLSearchParams(location.search||'');
+  ['code','state','error','error_description'].forEach(k=>{if(q.get(k))out[k]=q.get(k)});
+  return out;
+}
+function cleanOauthUrl(){
+  try{
+    let h=(location.hash||'').replace(/^#\??/,'');
+    if(h&&h.includes('=')&&/^(access_token|expires_in|refresh_token|token_type|error|error_description|error_uri|state|code)=/.test(h))h='';
+    const q=new URLSearchParams(location.search||'');
+    ['code','state','error','error_description','error_uri','provider_token'].forEach(k=>q.delete(k));
+    const qs=q.toString();
+    history.replaceState(null,'',location.origin+location.pathname+(qs?'?'+qs:'')+(h?'#'+h:'')); /* absolute → immune to protocol-relative pitfalls */
+  }catch(e){}
+}
+async function fbOauthInit(){
+  const op=oauthParams();
+  const isTok=op.access_token&&op.refresh_token, isErr=op.error, isCode=op.code;
+  if(!isTok&&!isErr&&!isCode)return;
+  if(session&&session.mode==='user'){cleanOauthUrl();return} /* duplicate callback while already signed in */
+  if(isErr){cleanOauthUrl();restoreAppHash();toast(t('fb_err_cancel'));return} /* cancelled / denied */
+  try{
+    if(isTok){ /* implicit return: hash carries the tokens; our server validates them with Supabase */
+      const r=await api('/auth/oauth-session',{body:{access_token:op.access_token,refresh_token:op.refresh_token}});
+      cleanOauthUrl();
+      signInAs(r.user,r.user.provider||'oauth',r.token,r.data);
+      restoreAppHash(); /* put #pandals / #eat / #days / #plan= back exactly where the user was */
+      offerMigration(); /* guest saves ride the existing opt-in migration */
+      return;
+    }
+    /* PKCE-style return (?code=…): exchange via the client library, then same server handoff */
+    const sb=await sbLoad();
+    if(!sb){cleanOauthUrl();toast(t('fb_err_fail'));return}
+    const ex=await sb.auth.exchangeCodeForSession(op.code).catch(()=>null);
+    cleanOauthUrl();
+    const ss=ex&&ex.data&&ex.data.session;
+    if(!ss||!ss.access_token){toast(t('fb_err_fail'));return}
+    const r=await api('/auth/oauth-session',{body:{access_token:ss.access_token,refresh_token:ss.refresh_token}});
+    signInAs(r.user,r.user.provider||'oauth',r.token,r.data);
+    restoreAppHash();
+    offerMigration();
+  }catch(e){
+    cleanOauthUrl();
+    restoreAppHash();
+    toast(!e.http?t('fb_err_net'):t('fb_err_fail'));
+  }
+}
+function emValid(email){return /^[^@\s]+@[^@\s]+\.[^@]+$/.test(email)}
+function inboxURL(email){
+  const d=(email.split('@')[1]||'').toLowerCase();
+  if(/^(gmail|googlemail)\./.test(d))return 'https://mail.google.com';
+  if(/^(yahoo|ymail)\./.test(d))return 'https://mail.yahoo.com';
+  if(/^(outlook|hotmail|live|msn)\./.test(d))return 'https://outlook.live.com/mail/';
+  if(/(icloud|me|mac)\./.test(d))return 'https://www.icloud.com/mail';
+  if(/^proton(me|mail)?\./.test(d))return 'https://mail.proton.me';
+  return ''; /* unknown provider → omit the Open Email button instead of faking a link */
+}
+function emailConfirmHTML(email,first){
+  const ib=inboxURL(email);
   return `<button type="button" class="back-link" onclick="openAuth()">← ${LANG==='bn'?'ফিরে যান':'Back'}</button>
-   <div class="auth-form" id="phStep1">
-   <label>${LANG==='bn'?'মোবাইল নম্বর':'Mobile number'}</label>
-   <input id="auPhone" type="tel" inputmode="tel" placeholder="+91 …">
-   <div class="mrow"><button type="button" class="mini gold" style="padding:12px" onclick="sendOtp()">${t('ph_send')}</button></div>
-   <p class="auth-note">${t('otp_note')}</p></div>`;
+   <div class="tabhead" style="margin:0 0 10px"><h4 class="t-h">${t('conf_h')}</h4></div>
+   <div class="auth-form conf-box">
+   <p class="t-p" style="margin:0 0 2px">${t(first?'em_err_conf':'conf_p1')}</p>
+   <p class="conf-mail">${escA(email)}</p>
+   ${first?'':`<p class="t-p" style="margin:0 0 6px">${t('conf_p2')}</p>`}
+   ${ib?`<div class="mrow" style="margin-top:8px"><a class="mini gold" style="padding:12px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none" href="${ib}" target="_blank" rel="noopener">${t('conf_open')}</a></div>`:''}
+   <div class="em-err" id="emErr"></div>
+   <p class="t-p" style="margin:10px 0 2px">${t('conf_q')}</p>
+   <button type="button" class="mini" id="confResend" style="padding:12px;min-height:44px" onclick="resendConfirm()">${t('conf_resend')}</button>
+   <div class="ehint" id="confCool"></div>
+   <button type="button" class="swaplink" onclick="authEmailSwap('login')">${t('swap_li')}</button>
+   </div>`;
 }
-function authOtpHTML(phone,otp){
-  const note=otp
-    ?(LANG==='bn'?'ডেমো মোড — এই OTP কোডটি হলো':'Demo mode — your OTP is')+' <b style="letter-spacing:3px">'+otp+'</b>'
-    :(LANG==='bn'?'আপনার নম্বরে ওটিপি পাঠানো হয়েছে।':'We sent a code to your number.');
-  return `<button type="button" class="back-link" onclick="openAuth('phone')">← OTP</button>
+function showEmailConfirm(email,first){clearAuthCool();emErr();confEmail=email;document.getElementById('authBox').innerHTML=emailConfirmHTML(email,first);startCool(document.getElementById('confResend'),authCoolSecs)}
+async function resendConfirm(){
+  emErr();
+  try{
+    await api('/auth/resend',{body:{email:confEmail}});
+  }catch(e){
+    if(e.http===429)emErr(null,t('em_err_many'));
+    else if(e.http===501)emErr(null,t('em_err_mailer'));
+    else emErr(null,t('em_err_net')); /* 5xx or network failure */
+    return;
+  }
+  startCool(document.getElementById('confResend'),authCoolSecs);
+}
+function emailOtpHTML(email){
+  return `<button type="button" class="back-link" onclick="openAuth()">← ${LANG==='bn'?'ফিরে যান':'Back'}</button>
+   <div class="tabhead" style="margin:0 0 10px"><h4 class="t-h">${t('otp_h')}</h4></div>
+   <div class="auth-form conf-box">
+   <p class="t-p" style="margin:0 0 2px">${t('otp_p1')}</p>
+   <p class="conf-mail">${escA(email)}</p>
+   <label style="margin-top:8px">${t('otp_lbl')}</label>
+   <div class="ecode-row">${[0,1,2,3,4,5].map(i=>`<input class="ecode-b" id="ecb${i}" inputmode="numeric" autocomplete="${i===0?'one-time-code':'off'}" maxlength="1" oninput="ecIn(${i},this)" onkeydown="ecKey(event,${i})" onpaste="ecPaste(event)" onfocus="this.select()">`).join('')}</div>
+   <div class="em-err" id="emErr"></div>
+   <div class="mrow" style="margin-top:6px"><button type="button" class="mini gold" style="padding:12px;min-height:44px" onclick="verifyEmailCode()">${t('otp_verify')}</button></div>
+   <p class="t-p" style="margin:10px 0 2px">${t('otp_q')}</p>
+   <button type="button" class="mini" id="otpResend" style="padding:12px;min-height:44px" onclick="resendConfirm()">${t('otp_resend')}</button>
+   <div class="ehint" id="otpCool"></div>
+   </div>`;
+}
+function showEmailOtp(email){clearAuthCool();emErr();confEmail=email;document.getElementById('authBox').innerHTML=emailOtpHTML(email);const f=document.getElementById('ecb0');if(f)f.focus();startCool(document.getElementById('otpResend'),authCoolSecs)}
+function ecVal(){return [0,1,2,3,4,5].map(i=>{const e=document.getElementById('ecb'+i);return e?e.value:''}).join('')}
+function ecIn(i,el){el.value=el.value.replace(/\D/g,'').slice(-1);if(el.value&&i<5){const n=document.getElementById('ecb'+(i+1));if(n)n.focus()}}
+function ecKey(e,i){if(e.key==='Backspace'&&!e.target.value&&i>0){const p=document.getElementById('ecb'+(i-1));if(p){p.focus();e.preventDefault()}}if(e.key==='Enter')verifyEmailCode()}
+function ecPaste(e){const txt=(e.clipboardData||window.clipboardData).getData('text')||'';const d=txt.replace(/\D/g,'').slice(0,6);if(!d)return;e.preventDefault();for(let i=0;i<6;i++){const b=document.getElementById('ecb'+i);if(b)b.value=d[i]||''}const last=document.getElementById('ecb'+Math.min(d.length,5));if(last)last.focus()}
+async function verifyEmailCode(){
+  const tk=ecVal();
+  if(tk.length<6){emErr(null,t('em_err_code'));return}
+  emErr();
+  try{
+    const r=await api('/auth/verify-email',{body:{email:confEmail,token:tk}});
+    signInAs(r.user,'email',r.token,r.data);
+    offerMigration();
+  }catch(e){
+    if(e.http===401){
+      emErr(null,e.code==='expired_code'?t('em_err_expired'):t('em_err_code'));
+      for(let i=0;i<6;i++){const b=document.getElementById('ecb'+i);if(b)b.value=''}
+      const f=document.getElementById('ecb0');if(f)f.focus();
+    }
+    else if(e.http===429)emErr(null,t('em_err_many'));
+    else if(e.http)emErr(null,t('em_err_net'));
+  }
+}
+function resetHTML(){
+  return `<button type="button" class="back-link" onclick="authEmailSwap('login')">← ${LANG==='bn'?'লগ ইনে ফিরুন':'Back to log in'}</button>
+   <div class="tabhead" style="margin:0 0 10px"><h4 class="t-h">${t('rst_h')}</h4></div>
    <div class="auth-form">
-   <label>OTP</label><input id="auOtp" inputmode="numeric" maxlength="4" placeholder="••••">
-   <div class="mrow"><button type="button" class="mini gold" style="padding:12px" onclick="verifyOtp('${phone}','${otp||''}')">${t('ph_verify')}</button></div>
-   <p class="auth-note">${note}</p></div>`;
+   <p class="t-p" style="margin:0 0 8px">${t('rst_p')}</p>
+   <label>${LANG==='bn'?'ইমেল':'Email'}</label><input id="rstEmail" type="email" inputmode="email" autocomplete="email" placeholder="${t('em_ph')}">
+   <div class="em-err" id="emErr"></div>
+   <div class="mrow" style="margin-top:6px"><button type="button" class="mini gold" style="padding:12px;min-height:44px" onclick="resetSubmit()">${t('rst_send')}</button></div>
+   </div>`;
 }
-function provGoogle(){
-  if(PUJO_CONFIG.googleClientId){ /* real flow — needs configured client id + backend token exchange */
-    const r=encodeURIComponent(location.origin+location.pathname);
-    location.href='https://accounts.google.com/o/oauth2/v2/auth?client_id='+encodeURIComponent(PUJO_CONFIG.googleClientId)+'&redirect_uri='+r+'&response_type=code&scope=openid%20email%20profile';
-  } else openAuth('setup-g');
-}
-function provFacebook(){
-  if(PUJO_CONFIG.facebookAppId){
-    location.href='https://www.facebook.com/v19.0/dialog/oauth?client_id='+encodeURIComponent(PUJO_CONFIG.facebookAppId)+'&redirect_uri='+encodeURIComponent(location.origin+location.pathname)+'&scope=email';
-  } else openAuth('setup-f');
+function openReset(){clearAuthCool();emErr();document.getElementById('authBox').innerHTML=resetHTML()}
+async function resetSubmit(){
+  const em=(document.getElementById('rstEmail').value||'').trim();
+  emErr();
+  if(!emValid(em)){emErr(null,t('em_err_mail'));return}
+  try{
+    await api('/auth/reset',{body:{email:em}});
+  }catch(e){
+    if(e.http===501)emErr(null,t('em_err_mailer'));
+    else if(e.http===429)emErr(null,t('em_err_many'));
+    else emErr(null,t('em_err_net')); /* 5xx or network failure */
+    return;
+  }
+  document.getElementById('authBox').innerHTML=`<div class="tabhead" style="margin:0 0 10px"><h4 class="t-h">${t('rst_sent_h')}</h4></div><div class="auth-form conf-box"><p class="t-p">${t('rst_sent_p')}</p><p class="conf-mail">${escA(em)}</p><button type="button" class="swaplink" onclick="openReset()">${t('em_forgot')}</button><button type="button" class="swaplink" onclick="authEmailSwap('login')">${t('swap_li')}</button></div>`;
 }
 async function emailSubmit(mode){
   const name=(document.getElementById('auName')||{}).value||'';
   const email=(document.getElementById('auEmail')||{}).value||'';
   const pass=(document.getElementById('auPass')||{}).value||'';
-  if(!email||!pass||pass.length<4){toast(LANG==='bn'?'ইমেল আর পাসওয়ার্ড (৪+ অক্ষর) দিন':'Enter an email and a password (4+ chars)');return}
+  emErr();
+  if(!emValid(email.trim())){emErr(null,t('em_err_mail'));return}
+  const minL=(authCfg&&authCfg.minLen)||4;
+  if(!pass||pass.length<minL){emErr(null,t('em_hint').replace('{n}',dg(minL)));return}
   const eid=email.trim().toLowerCase();
   if(apiUp!==false){ /* real backend */
     try{
-      const r=mode==='signup'
-        ?await api('/auth/signup',{body:{name:name,email:email,password:pass}})
-        :await api('/auth/login',{body:{email:email,password:pass}});
-      signInAs(r.user,'email',r.token,r.data);
-      if(mode==='signup')offerMigration();
+      if(mode==='signup'){
+        const r=await api('/auth/signup',{body:{name:name,email:email,password:pass}});
+        if(r.confirmation_required){showEmailConfirm(eid,false);return}
+        if(r.otp_required){showEmailOtp(eid);return}
+        signInAs(r.user,'email',r.token,r.data);
+        offerMigration();
+      }else{
+        const r=await api('/auth/login',{body:{email:email,password:pass}});
+        signInAs(r.user,'email',r.token,r.data);
+      }
       return;
     }catch(e){
-      if(e.http===409){toast(LANG==='bn'?'এই ইমেলে অ্যাকাউন্ট আছে — লগ ইন করুন':'Account exists — log in instead');authEmailSwap('login');return}
-      if(e.http===401){toast(LANG==='bn'?'ইমেল বা পাসওয়ার্ড মেলেনি':'Email or password doesn\u2019t match');return}
-      if(e.http){toast(LANG==='bn'?'একটু পরে চেষ্টা করুন':'Please try again');return}
+      if(e.http===409){emErr(null,t('em_err_exists'));authEmailSwap('login');return}
+      if(e.http===401){emErr(null,t('em_err_pw'));return}
+      if(e.http===403&&e.code==='email_not_confirmed'){showEmailConfirm(eid,true);return}
+      if(e.http===429){emErr(null,t('em_err_many'));return}
+      if(e.http===422){emErr(null,t('em_hint').replace('{n}',dg(minL)));return}
+      if(e.http){emErr(null,t('em_err_net'));return}
       apiUp=false; /* offline → local demo below */
     }
   }
   const U=getUsers();
   if(mode==='signup'){
-    if(U['e:'+eid]){toast(LANG==='bn'?'এই ইমেলে অ্যাকাউন্ট আছে — লগ ইন করুন':'Account exists — log in instead');authEmailHTML('login');return}
+    if(U['e:'+eid]){emErr(null,t('em_err_exists'));authEmailSwap('login');return}
     const salt=Math.random().toString(36).slice(2,10);
     const rec={id:'e:'+eid,name:name||email.split('@')[0],email:eid,phone:'',photo:'',provider:'email',salt,pass:await hashPass(pass,salt),created:Date.now()};
     U['e:'+eid]=rec;saveUsers(U);signInAs(rec,'email');offerMigration();
   }else{
     const rec=U['e:'+eid];
-    if(!rec||rec.pass!==await hashPass(pass,rec.salt||'')){toast(LANG==='bn'?'ইমেল বা পাসওয়ার্ড মেলেনি':'Email or password doesn\u2019t match');return}
+    if(!rec||rec.pass!==await hashPass(pass,rec.salt||'')){emErr(null,t('em_err_pw'));return}
     signInAs(rec,'email');
   }
-}
-async function sendOtp(){
-  const ph=(document.getElementById('auPhone')||{}).value||'';
-  if(ph.replace(/\D/g,'').length<10){toast(LANG==='bn'?'পুরো নম্বরটা লিখুন':'Enter the full number');return}
-  if(apiUp!==false){
-    try{const r=await api('/auth/otp-send',{body:{phone:ph}});
-      $('#authBox').innerHTML=authOtpHTML(ph,r.demo?r.code:'');
-      if(!r.demo){const n=document.querySelector('.auth-note');if(n)n.textContent=LANG==='bn'?'ওটিপি পাঠানো হয়েছে — লিখুন।':'OTP sent — enter it below.'}
-      return}
-    catch(e){if(e.http){toast(LANG==='bn'?'একটু পরে চেষ্টা করুন':'Please try again');return}apiUp=false}
-  }
-  const otp=String(Math.floor(1000+Math.random()*9000));
-  $('#authBox').innerHTML=authOtpHTML(ph,otp);
-}
-async function verifyOtp(phone,otp,expected){
-  const v=(document.getElementById('auOtp')||{}).value||'';
-  if(apiUp!==false){
-    try{const r=await api('/auth/otp-verify',{body:{phone:phone,code:v}});
-      signInAs(r.user,'mobile',r.token,r.data);
-      offerMigration();
-      return}
-    catch(e){if(e.http===401){toast(LANG==='bn'?'OTP মেলেনি':'Wrong OTP');return}
-      if(e.http){toast(LANG==='bn'?'একটু পরে চেষ্টা করুন':'Please try again');return}apiUp=false}
-  }
-  if(String(expected)&&v.trim()!==String(expected)){toast(LANG==='bn'?'OTP মেলেনি':'Wrong OTP');return}
-  const U=getUsers();const pid='m:'+phone.replace(/\D/g,'');
-  let rec=U[pid];
-  if(!rec){rec={id:pid,name:(LANG==='bn'?'পুজো ভক্ত':'Pujo Friend'),email:'',phone,photo:'',provider:'mobile',created:Date.now()};U[pid]=rec;saveUsers(U)}
-  signInAs(rec,'mobile');
 }
 function guestContinue(){
   session={mode:'guest'};try{localStorage.setItem('pujoSession','{"mode":"guest"}')}catch(e){}
@@ -2325,7 +2916,7 @@ function guestContinue(){
 }
 /* ---------- conversion prompt (guest → account) ---------- */
 function acctNudge(pa){
-  if(pa)pendingAction=pa;
+  if(pa)setPending(pa);
   closeModals();
   $('#mContent').innerHTML=`<div class="modal-head"><h3>${t('gate_h')}</h3></div>
    <div class="modal-body"><p style="color:#6b4a26;font-size:14px;line-height:1.65">${t('gate_p')}</p>
@@ -2341,7 +2932,7 @@ function guestLimit(){
   $('#mContent').innerHTML=`<div class="modal-head"><h3>${t('gl_h')}</h3></div>
    <div class="modal-body">
     <p style="color:#6b4a26;font-size:14px;line-height:1.6;margin:0 0 6px">${t('gl_p1').replace('{p}',dg(p)).replace('{f}',dg(f))}</p>
-    <p style="color:#8a6d4a;font-size:13px;line-height:1.6;margin:0">${t('gl_p2')}</p>
+    <p style="color:#6f5535;font-size:13px;line-height:1.6;margin:0">${t('gl_p2')}</p>
     <button type="button" class="prov-btn primary g" style="margin-top:16px" onclick="closeModals();provGoogle()"><span class="ic">G</span> ${t('auth_google')}</button>
     <div class="mrow" style="margin-top:4px">
      <button type="button" class="mini" onclick="closeModals();openAuth()">${t('gl_other')}</button>
@@ -2357,7 +2948,7 @@ function placeRef(t,id){
   return{em:'🛕',n:nm,meta:p.a,maps:p.lat?p.lat+','+p.lng:p.g};
 }
 function toggleSaveP(pid){
-  if(!savedP.has(pid)&&session.mode!=='user'&&savedP.size>=GLIM.pandal){pendingAction={kind:'save',t:'pandal',id:pid};guestLimit();return}
+  if(!savedP.has(pid)&&session.mode!=='user'&&savedP.size>=GLIM.pandal){setPending({kind:'save',t:'pandal',id:pid});guestLimit();return}
   SAVED2=SAVED2.filter(x=>!(x.t==='pandal'&&x.id===pid));
   if(!savedP.has(pid))SAVED2.push({t:'pandal',id:pid,at:Date.now()});
   persistUser();
@@ -2377,7 +2968,7 @@ function syncDirHearts(){
   PANDALS.forEach(p=>{
     const el=document.getElementById('d-'+p.id);if(!el)return;
     const h=el.querySelector('.act-heart'),v=el.querySelector('.act-vis');
-    if(h){h.classList.toggle('on',savedP.has(p.id));h.textContent=savedP.has(p.id)?'♥':'♡'}
+    if(h){h.classList.toggle('on',savedP.has(p.id));h.textContent=savedP.has(p.id)?t('btn_saved'):t('btn_save');h.setAttribute('aria-pressed',savedP.has(p.id)?'true':'false')}
     if(v)v.classList.toggle('on',VISITED.has('pandal:'+p.id));
   });
 }
@@ -2408,6 +2999,7 @@ function openSaved(tab,pickerDay){
   renderPanel();
 }
 let pendingAction=null,SHARED_VIEW=null;
+try{pendingAction=JSON.parse(localStorage.getItem('pujoPendingAction')||'null')}catch(e){}
 function openMyPujo(){if(session.mode!=='user'){acctNudge();return}panelMode={type:'mypujo'};renderPanel()}
 function openProfile(){
   if(session.mode!=='user'){openAuth();return}
@@ -2435,11 +3027,9 @@ function svRow(ty,id){
     ${panelMode.picker?`<div class="ptabs" style="margin:8px 0 0">${DAYS5.map(d=>`<button type="button" class="tab" onclick="addPlan('${d}','${ty}','${id}')">${t(D5KEY[d])}</button>`).join('')}</div>`:''}
    </div>
    <div class="sv-acts">
-    ${ty==='food'?`<button type="button" class="mini2" onclick="openSpot('${id}')">${t('sv_details')}</button>`:`<button type="button" class="mini2" onclick="openPandal('${id}')">${t('sv_details')}</button>`}
-    <button type="button" class="mini2" data-maps="${escA(r.maps)}">🧭</button>
-    <button type="button" class="mini2" onclick="addToPlanFlow('${ty}','${id}')">🪔 ${t('sv_addplan')}</button>
-    <button type="button" class="mini2 act-vis${VISITED.has(ty+':'+id)?' on':''}" onclick="toggleVisited('${ty}','${id}');renderPanel()">✓</button>
-    <button type="button" class="mini2" onclick="removeSaved('${ty}','${id}')">✕</button>
+    <button type="button" class="dir-btn" data-maps="${escA(r.maps)}">🧭 ${t('pair_dir')}</button>
+    <button type="button" class="mini2 act-vis${VISITED.has(ty+':'+id)?' on':''}" onclick="toggleVisited('${ty}','${id}');renderPanel()" title="${t('mark_visited')}">✓</button>
+    <button type="button" class="mini2" onclick="removeSaved('${ty}','${id}')" title="${LANG==='bn'?'সরান':'Remove'}">✕</button>
    </div></div>`;
 }
 function savedHTML(){
@@ -2456,7 +3046,11 @@ function savedHTML(){
     <div class="ptabs">${tabs.map(([k,l,em,c])=>`<button type="button" class="tab${panelMode.tab===k?' on':''}" onclick="openSaved('${k}',${panelMode.picker?`'${panelMode.picker}'`:'null'})">${em} ${t(l)} · ${dg(c)}</button>`).join('')}</div>
     ${list||`<div class="emptybox"><div class="big">${e[0]}</div>${e[1]}</div>`}
     ${panelMode.tab==='food'&&saved.size?`<div class="mrow" style="margin-top:14px"><button type="button" class="mini gold" onclick="doPrint()">${t('short_print')}</button>
-      <button type="button" class="mini" data-maps="${escA('https://www.google.com/maps/dir/?api=1&waypoints='+encodeURIComponent(SAVED2.filter(x=>x.t==='food').map(x=>{const s=SPOTS.find(y=>y.id===x.id);return s?s.maps:''}).join('|')))}">${t('short_route')}</button></div>`:''}
+      <button type="button" class="mini" data-maps="${escA('https://www.google.com/maps/dir/?api=1&waypoints='+encodeURIComponent(SAVED2.filter(x=>x.t==='food').map(x=>{const s=SPOTS.find(y=>y.id===x.id);return s?s.maps:''}).join('|')))}">${t('short_route')}</button>
+      <button type="button" class="mini" data-maps="${escA('https://www.google.com/maps/dir/?api=1&waypoints='+encodeURIComponent(SAVED2.map(x=>{const r=placeRef(x.t,x.id);return r?r.maps:''}).filter(Boolean).join('|')))}" title="${LANG==='bn'?'সেভ করা খাবার আর প্যান্ডেল সব একই রুটে':'One route with all saved food + pandals'}">${t('short_connect')}</button></div>`:''}
+    ${panelMode.tab==='pandal'&&savedP.size?`<div class="mrow" style="margin-top:14px"><button type="button" class="mini gold" onclick="doPrint()">${t('short_print')}</button>
+      <button type="button" class="mini" data-maps="${escA('https://www.google.com/maps/dir/?api=1&waypoints='+encodeURIComponent(SAVED2.filter(x=>x.t==='pandal').map(x=>{const r=placeRef('pandal',x.id);return r?r.maps:''}).filter(Boolean).join('|')))}">${t('short_route')}</button>
+      <button type="button" class="mini" data-maps="${escA('https://www.google.com/maps/dir/?api=1&waypoints='+encodeURIComponent(SAVED2.map(x=>{const r=placeRef(x.t,x.id);return r?r.maps:''}).filter(Boolean).join('|')))}" title="${LANG==='bn'?'সেভ করা খাবার আর প্যান্ডেল সব একই রুটে':'One route with all saved food + pandals'}">${t('short_connect')}</button></div>`:''}
     ${guestNote}</div>`;
 }
 function removeSaved(t,id){
@@ -2465,13 +3059,14 @@ function removeSaved(t,id){
   persistUser();renderPanel();
 }
 function addToPlanFlow(ty,id){
-  if(session.mode!=='user'){pendingAction={kind:'plan',t:ty,id};acctNudge();return}
+  if(session.mode!=='user'){setPending({kind:'plan',t:ty,id});acctNudge();return}
   panelMode={type:'saved',tab:ty,picker:true};
   renderPanel();
   toast(LANG==='bn'?'কোন দিনে রাখবেন? দিনটা বাছুন 🗓':'Pick a day for this stop 🗓');
 }
+function setPending(pa){pendingAction=pa;try{pa?localStorage.setItem('pujoPendingAction',JSON.stringify(pa)):localStorage.removeItem('pujoPendingAction')}catch(e){}}
 function runPending(){
-  const pa=pendingAction;pendingAction=null;if(!pa)return;
+  const pa=pendingAction;setPending(null);if(!pa)return;
   if(pa.kind==='save'){pa.t==='pandal'?toggleSaveP(pa.id):toggleSave(pa.id)}
   else if(pa.kind==='plan'){let best='saptami',bn=99;DAYS5.forEach(d=>{const n=(PLAN.days[d]||[]).length;if(n<bn){bn=n;best=d}});addPlan(best,pa.t,pa.id)}
 }
@@ -2614,13 +3209,14 @@ function sharedHTML(){
 }
 /* ---------- profile & settings ---------- */
 function profileHTML(){
-  const u=getUser(session.uid)||{name:session.name||'Guest'};
+  const u=curUser();
+  const ini=(u.name||'P').trim()[0].toUpperCase();
   return `<div class="modal-head"><h3>${t('acct_profile')}</h3></div>
    <div class="modal-body">
     <div style="display:flex;gap:14px;align-items:center;margin-bottom:6px">
-     <span class="avatar" style="width:56px;height:56px;font-size:22px">${u.photo?`<img src="${escA(u.photo)}" alt="">`:(u.name||'P').trim()[0].toUpperCase()}</span>
+     <span class="avatar" data-init="${escA(ini)}" style="width:56px;height:56px;font-size:22px">${u.photo?`<img src="${escA(u.photo)}" alt="" onerror="avErr(this)">`:ini}</span>
      <div><b style="font-size:17px;color:var(--maroon)">${escA(u.name)}</b>
-     <div class="meta">${t('prov_'+(u.provider||'guest'))}${u.email?' · '+escA(u.email):''}${u.phone?' · '+escA(u.phone):''}</div></div>
+     <div class="meta">${t('prov_'+(u.provider||'email'))}${u.email?' · '+escA(u.email):''}</div></div>
     </div>
     ${statRow()}
     <div class="mrow" style="margin-top:12px">
@@ -2629,12 +3225,15 @@ function profileHTML(){
      <button type="button" class="mini" onclick="openSettings()">⚙️ ${t('acct_settings')}</button></div></div>`;
 }
 function settingsHTML(){
-  const u=getUser(session.uid)||{};
+  const u=curUser();
+  const ini=(u.name||'P').trim()[0].toUpperCase();
   return `<div class="modal-head"><h3>${t('acct_settings')}</h3><div class="meta">${t('set_sub')}</div></div>
    <div class="modal-body">
-    <div class="set-row"><label>${t('set_name')}</label><input type="text" id="setName" value="${escA(u.name||'')}"></div>
-    <div class="set-row"><label>${t('set_photo')}</label><input type="file" id="setPhoto" accept="image/*" style="font:inherit;font-size:13px" onchange="photoPicked(this)"></div>
-    <div class="set-row"><label>${t('set_contact')}</label><div style="font-size:13.5px;color:#6b4a26">${u.email?escA(u.email):''}${u.phone?(u.email?' · ':'')+escA(u.phone):''}${!u.email&&!u.phone?(LANG==='bn'?'—':'—'):''}</div></div>
+    <div class="set-row"><label>${t('set_name')}</label><input type="text" id="setName" value="${escA(u.name||'')}" maxlength="40"></div>
+    <div class="set-row"><label>${t('set_photo')}</label><div style="display:flex;gap:12px;align-items:center">
+     <span class="avatar" data-init="${escA(ini)}" style="width:44px;height:44px;font-size:16px;flex:0 0 auto">${u.photo?`<img src="${escA(u.photo)}" alt="" onerror="avErr(this)">`:ini}</span>
+     <input type="file" id="setPhoto" accept="image/*" style="font:inherit;font-size:13px;min-width:0" onchange="photoPicked(this)"></div></div>
+    <div class="set-row"><label>${t('set_contact')}</label><div style="font-size:13.5px;color:#6b4a26">${u.email?escA(u.email):''}${!u.email?'—':''}</div></div>
     <div class="set-row"><label>${t('set_privacy')}</label>
      <div style="display:flex;gap:10px;align-items:center"><label class="switch"><input type="checkbox" id="setShare" ${PLAN.shareable?'checked':''} onchange="PLAN.shareable=this.checked;persistUser()"><i></i></label>
      <span style="font-size:12.5px;color:#6b4a26">${t('set_privacy_d')}</span></div></div>
@@ -2647,20 +3246,140 @@ function settingsHTML(){
 }
 function photoPicked(inp){
   const f=inp.files&&inp.files[0];if(!f)return;
+  if(!/^image\//.test(f.type||'')){toast(LANG==='bn'?'ছবি ফাইল একটা দিন':'Please choose an image file');inp.value='';return}
   const rd=new FileReader();
-  rd.onload=()=>{updUser(session.uid,u=>u.photo=rd.result);renderAuthUI();toast(LANG==='bn'?'ছবি বদলে গেছে 📸':'Photo updated 📸')};
+  rd.onload=()=>{openAvatarCrop(rd.result);inp.value=''};
+  rd.onerror=()=>{toast(LANG==='bn'?'ছবিটা পড়া গেল না':'Could not read that image');inp.value=''};
   rd.readAsDataURL(f);
+}
+/* ===== P19 · avatar crop — square viewfinder, pan/pinch/wheel/slider zoom,
+   live preview, cancel/save. Output: 256×256 JPEG (~15–30 KB). Entirely
+   on-device; the photo is stored in the local profile only (the API has no
+   photo-upload endpoint), which the modal states honestly. ===== */
+let AC={img:null,scale:1,tx:0,ty:0,natW:0,natH:0,VIEW:0};
+function openAvatarCrop(dataUrl){
+  const wasPanel=panelMode.type;
+  const im=new Image();
+  im.onload=()=>{
+    AC={img:im,natW:im.naturalWidth||im.width,natH:im.naturalHeight||im.height,scale:1,tx:0,ty:0,VIEW:0,from:wasPanel};
+    $('#mContent').innerHTML=`<div class="modal-head"><h3>${LANG==='bn'?'প্রোফাইল ছবি':'Profile photo'}</h3>
+      <div class="meta">${LANG==='bn'?'টেনে সরান · পিঞ্চ/স্লাইডারে জুম':'Drag to reposition · pinch or slide to zoom'}</div></div>
+     <div class="modal-body">
+      <div id="acView" style="position:relative;width:min(72vw,320px);height:min(72vw,320px);margin:0 auto;border-radius:16px;overflow:hidden;background:#2b1512;touch-action:none;cursor:grab">
+       <img id="acImg" src="${escA(dataUrl)}" alt="" draggable="false" style="position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;max-width:none;pointer-events:none;user-select:none;-webkit-user-select:none">
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;margin-top:14px">
+       <span style="font-size:15px" aria-hidden="true">🔍</span>
+       <input type="range" id="acZoom" min="1" max="3" step="0.01" value="1" style="flex:1;min-width:0;accent-color:var(--maroon2)" aria-label="${LANG==='bn'?'জুম':'Zoom'}">
+      </div>
+      <div class="mrow" style="margin-top:14px">
+       <button type="button" class="mini gold" id="acSave">${LANG==='bn'?'সেভ করুন ✓':'Save ✓'}</button>
+       <button type="button" class="mini" id="acCancel">${LANG==='bn'?'বাতিল':'Cancel'}</button>
+      </div>
+      <p class="auth-note" style="text-align:left">${LANG==='bn'?'ছবিটা কমপ্রেস হয়ে শুধু এই ডিভাইসেই থাকে — সার্ভারে আপলোড হয় না।':'The picture is compressed and kept on this device only — it is not uploaded to the server.'}</p>
+     </div>`;
+    closePanel(); /* the settings sheet sits above #mOverlay in stacking order */
+    $('#mOverlay').classList.add('open');
+    acInit();
+  };
+  im.onerror=()=>toast(LANG==='bn'?'ছবিটা পড়া গেল না':'Could not read that image');
+  im.src=dataUrl;
+}
+function acCover(){return Math.max(AC.VIEW/AC.natW,AC.VIEW/AC.natH)}
+function acApply(){
+  const img=document.getElementById('acImg');if(!img||!AC.img)return;
+  const S=AC.VIEW,cover=acCover();
+  AC.scale=Math.max(AC.scale,cover);
+  const w=AC.natW*AC.scale,h=AC.natH*AC.scale;
+  AC.tx=Math.min(Math.max(AC.tx,S-w),0);AC.ty=Math.min(Math.max(AC.ty,S-h),0);
+  img.style.width=AC.natW+'px';img.style.height=AC.natH+'px';
+  img.style.transform=`translate(${AC.tx}px,${AC.ty}px) scale(${AC.scale})`;
+}
+function acZoomTo(ns,cx,cy){ /* anchor stays fixed while zooming (client coords) */
+  const v=document.getElementById('acView');if(!v)return;
+  const r=v.getBoundingClientRect(),cover=acCover();
+  ns=Math.min(Math.max(ns,cover),cover*3);
+  const k=ns/AC.scale,ax=cx-r.left,ay=cy-r.top;
+  AC.tx=ax-k*(ax-AC.tx);AC.ty=ay-k*(ay-AC.ty);AC.scale=ns;
+  acApply();
+  const sl=document.getElementById('acZoom');if(sl)sl.value=(AC.scale/cover).toFixed(2);
+}
+function acInit(){
+  const v=document.getElementById('acView');if(!v)return;
+  AC.VIEW=v.clientWidth;
+  const cover=acCover();AC.scale=cover;
+  AC.tx=(AC.VIEW-AC.natW*cover)/2;AC.ty=(AC.VIEW-AC.natH*cover)/2;
+  acApply();
+  const sl=document.getElementById('acZoom');
+  sl.addEventListener('input',()=>{const r=v.getBoundingClientRect();acZoomTo(acCover()*(+sl.value||1),r.left+r.width/2,r.top+r.height/2)});
+  const pts=new Map();let pinch=null;
+  const mid=()=>{const a=[...pts.values()];return{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2}};
+  v.addEventListener('pointerdown',e=>{try{v.setPointerCapture(e.pointerId)}catch(err){}pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pts.size===2){const a=[...pts.values()];pinch={d:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)||1,s:AC.scale,c:mid()}}
+    v.style.cursor='grabbing'});
+  v.addEventListener('pointermove',e=>{
+    if(!pts.has(e.pointerId))return;
+    const prev=pts.get(e.pointerId);pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pts.size===1){AC.tx+=e.clientX-prev.x;AC.ty+=e.clientY-prev.y;acApply()}
+    else if(pts.size===2&&pinch){const a=[...pts.values()];const d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)||1;const c=mid();
+      acZoomTo(pinch.s*d/pinch.d,c.x,c.y)}
+  });
+  const up=e=>{pts.delete(e.pointerId);if(pts.size<2)pinch=null;if(!pts.size)v.style.cursor='grab'};
+  v.addEventListener('pointerup',up);v.addEventListener('pointercancel',up);
+  v.addEventListener('wheel',e=>{e.preventDefault();const r=v.getBoundingClientRect();
+    acZoomTo(AC.scale*(e.deltaY<0?1.12:0.89),e.clientX,e.clientY)},{passive:false});
+  document.getElementById('acSave').addEventListener('click',acSave);
+  document.getElementById('acCancel').addEventListener('click',acCancel);
+}
+function acCancel(){
+  closeModals();
+  if(AC.from==='settings'||AC.from==='profile'){panelMode={type:AC.from};renderPanel()}
+}
+function acSave(){
+  if(!AC.img)return;
+  const OUT=256;
+  try{
+    const c=document.createElement('canvas');c.width=OUT;c.height=OUT;
+    const g=c.getContext('2d');
+    g.fillStyle='#fdf4e3';g.fillRect(0,0,OUT,OUT);
+    const k=OUT/AC.VIEW;
+    g.drawImage(AC.img,AC.tx*k,AC.ty*k,AC.natW*AC.scale*k,AC.natH*AC.scale*k);
+    const url=c.toDataURL('image/jpeg',0.85);
+    updUser(session.uid,u=>u.photo=url);
+    session.photo=url;
+    try{localStorage.setItem('pujoSession',JSON.stringify(session))}catch(e){}
+    renderAuthUI();closeModals();
+    if(AC.from==='settings'||AC.from==='profile'){panelMode={type:AC.from};renderPanel()}
+    toast(LANG==='bn'?'ছবি বদলে গেছে 📸':'Photo updated 📸');
+  }catch(e){toast(LANG==='bn'?'ছবিটা সেভ করা গেল না':'Could not save that image')}
 }
 async function saveSettings(){
   const nm=(document.getElementById('setName')||{}).value||'';
-  updUser(session.uid,u=>u.name=nm.trim()||u.name);
-  session.name=nm.trim()||session.name;
+  const btn=(()=>{const ms=document.querySelectorAll('#panelContent .mrow button.mini.gold');for(const b of ms){const oc=b.getAttribute('onclick')||'';if(oc.indexOf('saveSettings')>-1)return b}return null})();
+  const setBtn=(txt,dis)=>{if(btn){btn.disabled=!!dis;btn.textContent=txt}};
+  const nn=nm.trim();
+  if(!nn){toast(LANG==='bn'?'একটা নাম লিখুন':'Please enter a name');return}
+  setBtn(LANG==='bn'?'সেভ হচ্ছে…':'Saving…',true);
+  updUser(session.uid,u=>u.name=nn);
+  session.name=nn;
   try{localStorage.setItem('pujoSession',JSON.stringify(session))}catch(e){}
-  renderAuthUI();renderPanel();
+  renderAuthUI();
   if(session.token&&apiUp!==false){
-    try{await api('/profile',{method:'PATCH',body:{name:session.name}})}
-    catch(e){toast(LANG==='bn'?'লোকাল সেভ হয়েছে, সার্ভারে যায়নি':'Saved locally, server sync failed');return}
+    try{
+      const r=await api('/profile',{method:'PATCH',body:{name:session.name}});
+      if(r&&r.user&&r.user.name){ /* local mode echoes the user — take the server version */
+        session.name=r.user.name;updUser(session.uid,u=>u.name=session.name);
+        try{localStorage.setItem('pujoSession',JSON.stringify(session))}catch(e){}
+        renderAuthUI();
+      } /* Supabase mode returns {ok:true} — nothing more to merge */
+    }catch(e){
+      setBtn(LANG==='bn'?'সেভ করুন':'Save',false);
+      toast(LANG==='bn'?'লোকাল সেভ হয়েছে, সার্ভারে যায়নি':'Saved locally, server sync failed');
+      if(panelMode.type==='settings')renderPanel();
+      return;
+    }
   }
+  if(panelMode.type==='settings'||panelMode.type==='profile')renderPanel();
   toast(LANG==='bn'?'সেটিংস সেভ হয়েছে ✓':'Settings saved ✓');
 }
 function confirmDelete(){
@@ -2729,11 +3448,62 @@ function mpCta(){
   window.addEventListener('resize',()=>{mpPin=null;mpHide(true)});
 })();
 
+/* ---------- P19 · keyboard-aware focus reveal (auth modal + panel forms) ----------
+   When an input inside the auth overlay or a panel sheet receives focus (the
+   on-screen keyboard pops up), scroll the nearest scrollable container so the
+   focused field AND its action buttons end up above the keyboard. Uses
+   visualViewport when available (iOS keeps the layout viewport unchanged). */
+(function(){
+  function reveal(el){
+    setTimeout(function(){
+      try{
+        let sc=null,n=el.parentElement;
+        while(n&&n!==document.body){
+          const cs=getComputedStyle(n);
+          if((cs.overflowY==='auto'||cs.overflowY==='scroll')&&n.scrollHeight>n.clientHeight+2){sc=n;break}
+          n=n.parentElement;
+        }
+        if(!sc){try{el.scrollIntoView({block:'center'})}catch(e){el.scrollIntoView(true)}return}
+        const sr=sc.getBoundingClientRect();
+        const vv=window.visualViewport;
+        const kbLine=vv?Math.floor(vv.offsetTop+vv.height):window.innerHeight;
+        const visBottom=Math.min(sr.bottom,kbLine)-12;
+        const visTop=Math.max(sr.top,0)+8;
+        const top0=sc.scrollTop;
+        const r=el.getBoundingClientRect();
+        let delta=0;
+        if(r.bottom>visBottom)delta=r.bottom-visBottom;   /* field below the fold */
+        if(r.top-delta<visTop)delta=r.top-visTop;          /* overshot upward */
+        const form=el.closest('.auth-form');
+        const btn=form?form.querySelector('.mrow'):null;
+        if(btn){const br=btn.getBoundingClientRect();
+          if(br.bottom>Math.max(visBottom,r.bottom))delta=br.bottom-visBottom} /* keep submit visible too */
+        if(delta>0){
+          try{sc.scrollTo({top:top0+delta,behavior:'smooth'})}catch(e){sc.scrollTop=top0+delta}
+        }
+      }catch(e){}
+    },330); /* wait out the keyboard slide-in animation */
+  }
+  document.addEventListener('focusin',function(e){
+    const t=e.target;
+    if(!t||!t.tagName||(t.tagName!=='INPUT'&&t.tagName!=='TEXTAREA'&&t.tagName!=='SELECT'))return;
+    if(t.type==='checkbox'||t.type==='radio'||t.type==='range'||t.type==='file')return;
+    if(t.closest('#authOverlay')||t.closest('#panelOverlay'))reveal(t);
+  });
+})();
 /* ---------- boot ---------- */
 function bootAccount(){
   if(session.mode==='user'&&session.token){
     api('/me').then(r=>{
-      session.name=r.user.name;session.email=r.user.email||'';
+      const prev=getUser(r.user.id)||{};
+      session.name=r.user.name||session.name;session.email=r.user.email||session.email||'';
+      session.photo=r.user.photo||session.photo||'';
+      try{const U=getUsers();
+        U[r.user.id]=Object.assign({},prev,{id:r.user.id,
+          name:r.user.name||prev.name||'',email:r.user.email||prev.email||'',
+          phone:r.user.phone||prev.phone||'',photo:r.user.photo||prev.photo||'',
+          provider:r.user.provider||prev.provider||'email'});
+        saveUsers(U)}catch(e){}
       try{localStorage.setItem('pujoSession',JSON.stringify(session))}catch(e){}
       clearUserNs(r.user.id);applyServerData(r.data);renderAuthUI();renderDynamic();
     }).catch(()=>{apiUp=false});
@@ -2747,6 +3517,7 @@ function bootAccount(){
 
 renderStatic(); renderDynamic();
   bootAccount();
+  fbOauthInit();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3e84147ef095d35',t:'MTc4OTk4NTE2Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3ef15a819e58b19',t:'MTc5MDA1Njc3Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
