@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="theme-color" content="#4a0d0d">
+<link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PujoSathi">
+<meta name="theme-color" content="#4a0d0d">
 <title>PujoSathi — Kolkata's Food Map for Durga Pujo 2026 · 17–21 Oct</title>
 <meta name="description" content="Handpicked Kolkata restaurants, biryani addas, street-food legends and mishti shops — mapped, timed and Pujo-ready for Durga Puja 2026 (Shashthi 17 Oct – Dashami 21 Oct). English & বাংলা.">
 <!-- NOTE FOR OWNER: replace the two placeholder deal texts and the contact email/WhatsApp before launch -->
@@ -812,6 +820,11 @@
 /* pandal dir-bar: right-aligned search entry button */
 .dir-search-btn{margin-left:auto;display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--cream);font:700 12.8px 'Poppins','Baloo Da 2','Segoe UI',system-ui,sans-serif;cursor:pointer;transition:.18s;white-space:nowrap}
 .dir-search-btn:hover{border-color:var(--gold);color:#fff;background:rgba(255,255,255,.14)}
+  /* P36 · PWA safe-area handling — zero effect on browsers/devices without insets */
+  header.top{padding-top:env(safe-area-inset-top,0px)}
+  .ps-fab{top:calc(70px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px))}
+  .toTop{bottom:calc(18px + env(safe-area-inset-bottom,0px));left:calc(14px + env(safe-area-inset-left,0px))}
+  .toast{bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 </style>
 </head>
 <body>
@@ -998,7 +1011,7 @@
       <button type="button" onclick="infoModal('hiw')" data-i18n="f_hiw">How PujoSathi Works</button>
       <button type="button" onclick="infoModal('savemp')" data-i18n="f_savemp">Save &amp; My Pujo</button>
       <button type="button" onclick="infoModal('guest')" data-i18n="f_guest">Guest vs Account</button>
-      <a href="/cdn-cgi/l/email-protection#81e9e4ededeec1f1f4ebeef2e0f5e9e8afe8ef" data-i18n="f_contact">Contact Us</a>
+      <a href="/cdn-cgi/l/email-protection#1f777a7373705f6f6a75706c7e6b7776317671" data-i18n="f_contact">Contact Us</a>
     </nav>
     <nav class="f-col legal" aria-labelledby="fh-legal">
       <h4 id="fh-legal" data-i18n="foot_legal">Legal</h4>
@@ -3519,5 +3532,11 @@ renderStatic(); renderDynamic();
   bootAccount();
   fbOauthInit();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3ef85ed29eeb237',t:'MTc5MDA2MTM3NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>
+/* P36 · PWA service worker registration — https (or localhost) only, silent on failure */
+if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1')){
+  addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
+}
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3ff340a0ac9df32',t:'MTc5MDIyNTc5Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
